@@ -9,8 +9,8 @@ const csvUrl =
   datum +
   "_forecast_data.csv";
 
-export const useData = (methode, menuAge, selectedScope) => { 
-  
+export const useData = (methode, date1) => { 
+
   const [data, setData] = useState(null);
 
   useEffect(() => {

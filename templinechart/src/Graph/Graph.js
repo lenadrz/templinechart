@@ -35,6 +35,9 @@ export const Graph = ({
 }) => {
   let width = 800;
 
+  const date1 = date.toString();
+
+  console.log(date);
   let anzeigeDatenstand;
 
   let anzeigeEpiforecast;
@@ -49,15 +52,15 @@ export const Graph = ({
 
   const data = useData("ILM-prop"); //muss noch gelöscht werden
 
-  const EPIdata = useData("Epiforecasts-independent");
-  const ILMdata = useData("ILM-prop");
-  const KITdata = useData("KIT-simple_nowcast");
-  const LMUdata = useData("LMU_StaBLab-GAM_nowcast");
-  const Nowcastdata = useData("NowcastHub-MeanEnsemble");
-  const RIVMdata = useData("RIVM-KEW");
-  const RKIdata = useData("RKI-weekly_report");
-  const SUdata = useData("SU-hier_bayes");
-  const SZdata = useData("SZ-hosp_nowcast");
+  const EPIdata = useData("Epiforecasts-independent", date1);
+  const ILMdata = useData("ILM-prop", date1);
+  const KITdata = useData("KIT-simple_nowcast", date1);
+  const LMUdata = useData("LMU_StaBLab-GAM_nowcast", date1);
+  const Nowcastdata = useData("NowcastHub-MeanEnsemble", date1);
+  const RIVMdata = useData("RIVM-KEW", date1);
+  const RKIdata = useData("RKI-weekly_report", date1);
+  const SUdata = useData("SU-hier_bayes", date1 );
+  const SZdata = useData("SZ-hosp_nowcast", date1);
 
   if (isVisible === true) {
     width = 800;

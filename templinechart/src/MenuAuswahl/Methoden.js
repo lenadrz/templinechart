@@ -4,6 +4,7 @@ import { FiChevronRight } from "react-icons/fi";
 import { Graph } from "../Graph/Graph";
 import "./DesignMethoden.css";
 import { Dropdown } from "./Dropdown";
+import { timeFormat } from "d3";
 
 const optionsAge = [
   { value: "00+", label: "00+" },
@@ -39,6 +40,10 @@ const initialValueAge = "00+";
 const initialValueAnzeige = "absoluteZahlen";
 const initialValue = "Deutschland";
 const initialValueIntervall = "keines";
+
+const dateFormatter = timeFormat("%Y-%m-%d");
+const initialDate = dateFormatter(new Date());
+
 
 export const MethodenDiv = () => {
   const [isDatenstand, setDatenstand] = useState(false);
@@ -86,7 +91,7 @@ export const MethodenDiv = () => {
   const [menuAge, setmenuAge] = useState(initialValueAge);
   const [anzeige, setAnzeige] = useState(initialValueAnzeige);
   const [selectedScope, setScope] = useState(initialValue);
-  const [date, setDate] = useState();
+  const [date, setDate] = useState(initialDate);
   const [intervall, setIntervall] = useState(initialValueIntervall);
 
   const [isVisible, setIsVisible] = useState(false);
