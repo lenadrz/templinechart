@@ -1,0 +1,75 @@
+.wrapper{
+    width: 99%;
+    height: 600px;
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: black; */
+}
+/* 
+.menuBand{
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+}
+.menuOptionen{
+    width: 20%;
+    left: 18px
+
+}
+#datenstand{
+
+    height: 100px;
+    position: absolute;
+    top: 20px;
+
+}
+/* CSS für den Fiterkasten */
+#filter{
+    height: 100px;
+    position: absolute;
+    top: 130px;
+}
+
+#inhalt{
+    position:absolute;
+    left:20px;
+    top:30px
+}
+
+#anzeige{
+    height: 100px;
+    position: absolute;
+    top: 240px;
+}
+#unsicherheitsintervall{
+    height: 100px;
+    position: absolute;
+    top: 350px
+}
+
+.einführung{
+    font-size: 25px;
+    position:absolute;
+    top: 0;
+}
+
+#methode{
+    float: right;
+    height: 300px;
+    width: 19%;
+}
+
+.graph{
+    width: 58%;
+    border: 1px;
+    border-color: black;
+    position: relative;
+    top:60px;
+    left: 310px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+}

@@ -1,0 +1,62 @@
+.bold {
+  font-weight: bold;
+}
+.moved {
+  transform: translateX(-30%);
+}
+/* ---------------------------- nicht ändern */
+
+.line {
+  height: 3px;
+  width: 30px;
+  background-color: blue;
+  margin-right: 10px;
+}
+
+.GraphundMethoden {
+  display: flex;
+  float: right;
+  width: 80%;
+}
+
+.Methoden {
+  position: relative;
+  cursor: pointer;
+  width: 100px;
+  justify-content: flex-end;
+}
+
+.methodenEinblenden {
+  cursor: pointer;
+  float: right;
+}
+
+.RoundButton {
+  float: left;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.iconPfeil {
+  font-size: 2em;
+  color: rgb(58, 58, 91);
+  margin-right: 3px;
+}
+
+#methodenEinblenden {
+  cursor: pointer;
+  margin-left: 5%;
+}
+
+.auswahl {
+  cursor: pointer;
+  
+}
+
+
+/* border-width: 1px;
+    border-style: solid;
+    border-color: black; */
