@@ -1,6 +1,23 @@
 import "./Graph.css"
 
-export const AxisLeft = ({ yScale, innerWidth, tickOffset = 3 }) =>
+// export const AxisLeft = ({ yScale, innerWidth, tickOffset }) =>
+//   yScale.ticks().map(tickValue => (
+//     <g className="tick" transform={`translate(0,${yScale(tickValue)})`}>
+//       <line x2={innerWidth} />
+//       <text
+//         key={tickValue}
+//         style={{ textAnchor: 'end' }}
+//         x={-tickOffset}
+//         dy=".32em"
+//       >
+//         {tickValue.toString()}
+//       </text>
+//     </g>
+//   ));
+
+
+
+  export const AxisLeft = ({ yScale, innerWidth, tickOffset }) =>
   yScale.ticks().map(tickValue => (
     <g className="tick" transform={`translate(0,${yScale(tickValue)})`}>
       <line x2={innerWidth} />
@@ -10,10 +27,7 @@ export const AxisLeft = ({ yScale, innerWidth, tickOffset = 3 }) =>
         x={-tickOffset}
         dy=".32em"
       >
-        {tickValue}
+        {tickValue.toLocaleString("de-DE").replace(",", " ")}
       </text>
     </g>
   ));
-
-
-  

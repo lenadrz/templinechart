@@ -46,12 +46,6 @@ export const Graph = ({
   let width = 800;
 
 
-  // if(selectedScope){
-  //   selectedScope1 = "DE-SH"
-  // }else{selectedScope1= "DE"}
-
- 
-
   let anzeigeDatenstand;
 
   let anzeigeEpiforecast;
@@ -182,12 +176,13 @@ export const Graph = ({
 
   // anstatt 0 kann man auch :min(data, yValue) nehmen
 
+
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
         <AxisBottom
           xScale={xScale}
-          innerHeight={innerHeight}
+          innerHeight={innerHeight + 10}
           tickFormat={xAxisTickFormat}
           tickOffset={10}
         />
@@ -210,6 +205,7 @@ export const Graph = ({
           {xAxisLabel}
         </text>
         <g className="mark">
+
           <Marks
             data={EPIdata}
             xScale={xScale}
@@ -235,15 +231,17 @@ export const Graph = ({
             anzeigeAnAus={anzeigeILM}
             farbe={"0,0,255"}
           />
-          {/* <Marks
+          <Marks
             data={KITdata}
             xScale={xScale}
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
+            yQuantileKlein={yQuantileKlein}
+            yQuantileGroß={yQuantileGroß}
             circleRadius={3}
             anzeigeAnAus={anzeigeKIT}
-            farbe={"yellow"}
+            farbe={"100,0,250"}
           />
           <Marks
             data={LMUdata}
@@ -251,9 +249,11 @@ export const Graph = ({
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
+            yQuantileKlein={yQuantileKlein}
+            yQuantileGroß={yQuantileGroß}
             circleRadius={3}
             anzeigeAnAus={anzeigeLMU}
-            farbe={"black"}
+            farbe={"400,10,200"}
           />
           <Marks
             data={Nowcastdata}
@@ -261,9 +261,11 @@ export const Graph = ({
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
+            yQuantileKlein={yQuantileKlein}
+            yQuantileGroß={yQuantileGroß}
             circleRadius={3}
             anzeigeAnAus={anzeigeNowcast}
-            farbe={"green"}
+            farbe={"100,049,0"}
           />
 
           <Marks
@@ -272,9 +274,11 @@ export const Graph = ({
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
+            yQuantileKlein={yQuantileKlein}
+            yQuantileGroß={yQuantileGroß}
             circleRadius={3}
             anzeigeAnAus={anzeigeRIVM}
-            farbe={"brown"}
+            farbe={"600,100,200"}
           />
           <Marks
             data={RKIdata}
@@ -282,9 +286,11 @@ export const Graph = ({
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
+            yQuantileKlein={yQuantileKlein}
+            yQuantileGroß={yQuantileGroß}
             circleRadius={3}
             anzeigeAnAus={anzeigeRKI}
-            farbe={"purple"}
+            farbe={"100,100,100"}
           />
           <Marks
             data={SUdata}
@@ -292,9 +298,11 @@ export const Graph = ({
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
+            yQuantileKlein={yQuantileKlein}
+            yQuantileGroß={yQuantileGroß}
             circleRadius={3}
             anzeigeAnAus={anzeigeSU}
-            farbe={"grey"}
+            farbe={"010,200,222"}
           />
           <Marks
             data={SZdata}
@@ -302,38 +310,16 @@ export const Graph = ({
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
+            yQuantileKlein={yQuantileKlein}
+            yQuantileGroß={yQuantileGroß}
             circleRadius={3}
             anzeigeAnAus={anzeigeSZ}
-            farbe={"green"}
-          /> */}
+            farbe={"0,0,0"}
+          />
         </g>
       </g>
     </svg>
   );
 };
 
-// Für Punkte im Graphen:
-// {data.map((d) => (
-//   <circle
-//     // className="mark"
-//     cx={xScale(xValue(d))}
-//     cy={yScale(yValue(d))}
-//     r={3}
-//   >
-//     <title>{xAxisTickFormat(xValue(d))}</title>
-//   </circle>
-// ))
-// }
 
-{
-  /* <Marks
-        data={data}
-        xScale={xScale}
-        yScale={yScale}
-        xValue={xValue}
-        yValue={yValue}
-        tooltipFormat={tooltipFormat}
-        circleRadius={circleRadius}
-        isDatenstand={isDatenstand}
-      /> */
-}

@@ -4,11 +4,12 @@ import { FiChevronRight } from "react-icons/fi";
 import { Graph } from "../Graph/Graph";
 import "./DesignMethoden.css";
 import { Dropdown } from "./Dropdown";
-import { timeFormat } from "d3";
-import { useData} from "../Graph/useData";
+import { color, timeFormat } from "d3";
+import { useData } from "../Graph/useData";
+import { useDataFede } from "../Graph/useData";
+import { QuestionMark } from "./QuestionMark";
 
-
-
+export default QuestionMark;
 
 const optionsAge = [
   { value: "00+", label: "00+" },
@@ -48,10 +49,7 @@ const initialValueIntervall = "keines";
 const dateFormatter = timeFormat("%Y-%m-%d");
 const initialDate = dateFormatter(new Date());
 
-
 export const MethodenDiv = () => {
-
-
   const [isDatenstand, setDatenstand] = useState(false);
   const [isEpiforecast, setEpiforecast] = useState(false);
   const [isILM, setILM] = useState(true);
@@ -62,7 +60,6 @@ export const MethodenDiv = () => {
   const [isRKI, setRKI] = useState(false);
   const [isSU, setSU] = useState(false);
   const [isSZ, setSZ] = useState(false);
-
 
   function handleClickDatenstand() {
     setDatenstand(!isDatenstand);
@@ -103,7 +100,6 @@ export const MethodenDiv = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [label, setLabel] = useState("Methoden einblenden");
 
-
   function handleClick() {
     setIsVisible(!isVisible);
     setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
@@ -117,12 +113,10 @@ export const MethodenDiv = () => {
   const Nowcastdata = useData("NowcastHub-MeanEnsemble", menuAge);
   const RIVMdata = useData("RIVM-KEW", menuAge);
   const RKIdata = useData("RKI-weekly_report", menuAge);
-  const SUdata = useData("SU-hier_bayes", menuAge );
+  const SUdata = useData("SU-hier_bayes", menuAge);
   const SZdata = useData("SZ-hosp_nowcast", menuAge);
 
   return (
-
-    
     <div>
       <div id="menuBand">
         <div id="datenstand" className="menuOptionen">
@@ -131,7 +125,12 @@ export const MethodenDiv = () => {
             <div className="container">
               <label>Datenstand:</label>
               <div>
-                <input type="date" onChange={(e) => setDate(e.target.value)} max={initialDate} min="2021-07-01"/> 
+                <input
+                  type="date"
+                  onChange={(e) => setDate(e.target.value)}
+                  max={initialDate}
+                  min="2021-07-01"
+                />
                 {/* Man kann ein anderes Datum nicht auswählen. Jedoch werden sie trz. angezeigt. @Lena, kannst du dir das mal anschauen? */}
               </div>
             </div>
@@ -149,13 +148,16 @@ export const MethodenDiv = () => {
                 selectedValue={selectedScope}
                 onSelectedValueChange={setScope}
               /> */}
-                <select id={"scope-select"} onChange={event => setScope(event.target.value)}>
-    {options.map(({ value, label }) => (
-      <option value={value} selected={value === selectedScope}>
-        {label}
-      </option>
-    ))}
-  </select>
+              <select
+                id={"scope-select"}
+                onChange={(event) => setScope(event.target.value)}
+              >
+                {options.map(({ value, label }) => (
+                  <option value={value} selected={value === selectedScope}>
+                    {label}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label for="scope-select">Ater</label>
@@ -226,7 +228,7 @@ export const MethodenDiv = () => {
         </div>
       </div>
 
-{/* Graph ----------------------------------------------------------- */}
+      {/* Graph ----------------------------------------------------------- */}
       <div className="GraphundMethoden">
         <Graph
           className="graph"
@@ -243,17 +245,17 @@ export const MethodenDiv = () => {
           isSZ={isSZ}
           data={data}
           EPIdata={EPIdata}
-          ILMdata ={ILMdata}
-          KITdata ={KITdata}
+          ILMdata={ILMdata}
+          KITdata={KITdata}
           LMUdata={LMUdata}
           Nowcastdata={Nowcastdata}
           RIVMdata={RIVMdata}
-          RKIdata ={RKIdata}
+          RKIdata={RKIdata}
           SUdata={SUdata}
-          SZdata  ={SZdata}
+          SZdata={SZdata}
         />
 
-{/* Methoden ----------------------------------------------------------- */}
+        {/* Methoden ----------------------------------------------------------- */}
 
         <div className="Methoden">
           <button className="RoundButton" onClick={handleClick}>
@@ -293,12 +295,12 @@ export const MethodenDiv = () => {
               </p>
             </div>
 
-                {/* <hr className="line" /> */}
+            {/* <hr className="line" /> */}
             <div
               className={`container ${isILM ? "moved" : ""}`}
               onClick={handleClickILM}
             >
-          {/* <hr className="line" /> */} 
+              {/* <hr className="line" /> */}
               <p
                 className={`ILM ${isILM ? "bold" : ""}`}
                 onClick={handleClickILM}
@@ -310,7 +312,7 @@ export const MethodenDiv = () => {
               className={`container ${isKIT ? "moved" : ""}`}
               onClick={handleClickKIT}
             >
-           {/* <hr className="line" /> */} 
+              {/* <hr className="line" /> */}
               <p
                 className={`KIT ${isKIT ? "bold" : ""}`}
                 onClick={handleClickKIT}
@@ -322,7 +324,7 @@ export const MethodenDiv = () => {
               className={`container ${isLMU ? "moved" : ""}`}
               onClick={handleClickLMU}
             >
-            {/* <hr className="line" /> */} 
+              {/* <hr className="line" /> */}
               <p
                 className={`LMU ${isLMU ? "bold" : ""}`}
                 onClick={handleClickLMU}
@@ -334,7 +336,7 @@ export const MethodenDiv = () => {
               className={`container ${isNowcast ? "moved" : ""}`}
               onClick={handleClickNowcast}
             >
-                  {/* <hr className="line" /> */}
+              {/* <hr className="line" /> */}
               <p
                 className={`Nowcast ${isNowcast ? "bold" : ""}`}
                 onClick={handleClickNowcast}
@@ -346,7 +348,7 @@ export const MethodenDiv = () => {
               className={`container ${isRIVM ? "moved" : ""}`}
               onClick={handleClickRIVM}
             >
-                  {/* <hr className="line" /> */}
+              {/* <hr className="line" /> */}
               <p
                 className={`RIVM ${isRIVM ? "bold" : ""}`}
                 onClick={handleClickRIVM}
@@ -358,7 +360,7 @@ export const MethodenDiv = () => {
               className={`container ${isRKI ? "moved" : ""}`}
               onClick={handleClickRKI}
             >
-                  {/* <hr className="line" /> */}
+              {/* <hr className="line" /> */}
               <p
                 className={`RKI ${isRKI ? "bold" : ""}`}
                 onClick={handleClickRKI}
@@ -370,19 +372,28 @@ export const MethodenDiv = () => {
               className={`container ${isSU ? "moved" : ""}`}
               onClick={handleClickSU}
             >
-                  {/* <hr className="line" /> */}
+              {/* <hr className="line" /> */}
               <p className={`SU ${isSU ? "bold" : ""}`} onClick={handleClickSU}>
                 SU-hier_bayes
               </p>
             </div>
-            <div
-              className={`container ${isSZ ? "moved" : ""}`}
-              onClick={handleClickSZ}
-            >
-                  {/* <hr className="line" /> */}
-              <p className={`SZ ${isSZ ? "bold" : ""}`} onClick={handleClickSZ}>
+            <div onClick={handleClickSZ}>
+              <p
+                className={`SZ container ${isSZ ? "bold moved" : ""}`}
+                onClick={handleClickSZ}
+              >
                 SZ-hosp_nowcast
               </p>
+              <div
+                className="QuestionMark-container"
+                style={{ display: "flex" }}
+              >
+                <hr
+                  className="line"
+                  style={{ backgroundColor: "rgb(0,0,0)" }}
+                />
+                <QuestionMark explanation="Erklärung" />
+              </div>
             </div>
           </div>
         )}
@@ -390,3 +401,5 @@ export const MethodenDiv = () => {
     </div>
   );
 };
+
+
