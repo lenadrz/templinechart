@@ -5,6 +5,10 @@ import { Graph } from "../Graph/Graph";
 import "./DesignMethoden.css";
 import { Dropdown } from "./Dropdown";
 import { timeFormat } from "d3";
+import { useData} from "../Graph/useData";
+
+
+
 
 const optionsAge = [
   { value: "00+", label: "00+" },
@@ -36,7 +40,7 @@ const options = [
   { value: "DE-TH", label: "Thüringen" },
 ];
 
-const initialValueAge = "00+";
+const initialValueAge = "00-04";
 const initialValueAnzeige = "absoluteZahlen";
 const initialValue = "Deutschland";
 const initialValueIntervall = "keines";
@@ -46,6 +50,8 @@ const initialDate = dateFormatter(new Date());
 
 
 export const MethodenDiv = () => {
+
+
   const [isDatenstand, setDatenstand] = useState(false);
   const [isEpiforecast, setEpiforecast] = useState(false);
   const [isILM, setILM] = useState(true);
@@ -56,6 +62,7 @@ export const MethodenDiv = () => {
   const [isRKI, setRKI] = useState(false);
   const [isSU, setSU] = useState(false);
   const [isSZ, setSZ] = useState(false);
+
 
   function handleClickDatenstand() {
     setDatenstand(!isDatenstand);
@@ -93,16 +100,29 @@ export const MethodenDiv = () => {
   const [selectedScope, setScope] = useState(initialValue);
   const [date, setDate] = useState(initialDate);
   const [intervall, setIntervall] = useState(initialValueIntervall);
-
   const [isVisible, setIsVisible] = useState(false);
   const [label, setLabel] = useState("Methoden einblenden");
+
 
   function handleClick() {
     setIsVisible(!isVisible);
     setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
   }
 
+  const data = useData("ILM-prop", menuAge); //muss noch gelöscht werden
+  const EPIdata = useData("Epiforecasts-independent", menuAge);
+  const ILMdata = useData("ILM-prop", menuAge);
+  const KITdata = useData("KIT-simple_nowcast", menuAge);
+  const LMUdata = useData("LMU_StaBLab-GAM_nowcast", menuAge);
+  const Nowcastdata = useData("NowcastHub-MeanEnsemble", menuAge);
+  const RIVMdata = useData("RIVM-KEW", menuAge);
+  const RKIdata = useData("RKI-weekly_report", menuAge);
+  const SUdata = useData("SU-hier_bayes", menuAge );
+  const SZdata = useData("SZ-hosp_nowcast", menuAge);
+
   return (
+
+    
     <div>
       <div id="menuBand">
         <div id="datenstand" className="menuOptionen">
@@ -111,7 +131,8 @@ export const MethodenDiv = () => {
             <div className="container">
               <label>Datenstand:</label>
               <div>
-                <input type="date" onChange={(e) => setDate(e.target.value)} />
+                <input type="date" onChange={(e) => setDate(e.target.value)} max={initialDate} min="2021-07-01"/> 
+                {/* Man kann ein anderes Datum nicht auswählen. Jedoch werden sie trz. angezeigt. @Lena, kannst du dir das mal anschauen? */}
               </div>
             </div>
           </div>
@@ -122,12 +143,19 @@ export const MethodenDiv = () => {
           <div id="inhalt">
             <div>
               <label for="scope-select">Bundesland:</label>
-              <Dropdown
+              {/* <Dropdown
                 options={options}
                 id="scope-select"
                 selectedValue={selectedScope}
                 onSelectedValueChange={setScope}
-              />
+              /> */}
+                <select id={"scope-select"} onChange={event => setScope(event.target.value)}>
+    {options.map(({ value, label }) => (
+      <option value={value} selected={value === selectedScope}>
+        {label}
+      </option>
+    ))}
+  </select>
             </div>
             <div>
               <label for="scope-select">Ater</label>
@@ -197,6 +225,8 @@ export const MethodenDiv = () => {
           </div>
         </div>
       </div>
+
+{/* Graph ----------------------------------------------------------- */}
       <div className="GraphundMethoden">
         <Graph
           className="graph"
@@ -211,11 +241,16 @@ export const MethodenDiv = () => {
           isRKI={isRKI}
           isSU={isSU}
           isSZ={isSZ}
-          menuAge={menuAge}
-          anzeige={anzeige}
-          selectedScope={selectedScope}
-          date={date}
-          intervall={intervall}
+          data={data}
+          EPIdata={EPIdata}
+          ILMdata ={ILMdata}
+          KITdata ={KITdata}
+          LMUdata={LMUdata}
+          Nowcastdata={Nowcastdata}
+          RIVMdata={RIVMdata}
+          RKIdata ={RKIdata}
+          SUdata={SUdata}
+          SZdata  ={SZdata}
         />
 
 {/* Methoden ----------------------------------------------------------- */}

@@ -31,13 +31,27 @@ export const Graph = ({
   anzeige,
   selectedScope, 
   date, 
-  intervall
+  intervall,
+  data,
+  EPIdata,
+  ILMdata,
+  KITdata,
+  LMUdata,
+  Nowcastdata,
+  RIVMdata,
+  RKIdata,
+  SUdata,
+  SZdata
 }) => {
   let width = 800;
 
-  const date1 = date.toString();
 
-  console.log(date);
+  // if(selectedScope){
+  //   selectedScope1 = "DE-SH"
+  // }else{selectedScope1= "DE"}
+
+ 
+
   let anzeigeDatenstand;
 
   let anzeigeEpiforecast;
@@ -50,17 +64,18 @@ export const Graph = ({
   let anzeigeSU;
   let anzeigeSZ;
 
-  const data = useData("ILM-prop"); //muss noch gelöscht werden
+  // const data = useData("ILM-prop", menuAge); //muss noch gelöscht werden
+  // const EPIdata = useData("Epiforecasts-independent", menuAge);
+  // const ILMdata = useData("ILM-prop", menuAge);
+  // const KITdata = useData("KIT-simple_nowcast", menuAge);
+  // const LMUdata = useData("LMU_StaBLab-GAM_nowcast", menuAge);
+  // const Nowcastdata = useData("NowcastHub-MeanEnsemble", menuAge);
+  // const RIVMdata = useData("RIVM-KEW", menuAge);
+  // const RKIdata = useData("RKI-weekly_report", menuAge);
+  // const SUdata = useData("SU-hier_bayes", menuAge );
+  // const SZdata = useData("SZ-hosp_nowcast", menuAge);
 
-  const EPIdata = useData("Epiforecasts-independent", date1);
-  const ILMdata = useData("ILM-prop", date1);
-  const KITdata = useData("KIT-simple_nowcast", date1);
-  const LMUdata = useData("LMU_StaBLab-GAM_nowcast", date1);
-  const Nowcastdata = useData("NowcastHub-MeanEnsemble", date1);
-  const RIVMdata = useData("RIVM-KEW", date1);
-  const RKIdata = useData("RKI-weekly_report", date1);
-  const SUdata = useData("SU-hier_bayes", date1 );
-  const SZdata = useData("SZ-hosp_nowcast", date1);
+
 
   if (isVisible === true) {
     width = 800;
@@ -141,6 +156,8 @@ export const Graph = ({
   const xAxisLabel = "Meldedatum";
 
   const yValue = (d) => d.value;
+  const yQuantileKlein = (d) => d.quantileKlein;
+  const yQuantileGroß = (d) => d.quantileGroß;
   const yAxisLabel = "7 Tage Hospitalisierungsinzidenz";
 
   // const siFormat = format('.2s');
@@ -199,11 +216,11 @@ export const Graph = ({
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
+            yQuantileKlein={yQuantileKlein}
+            yQuantileGroß={yQuantileGroß}
             circleRadius={3}
             anzeigeAnAus={anzeigeEpiforecast}
             farbe={"red"}
-            menuAge={menuAge}
-            selectedScope={selectedScope}
           />
 
           <Marks
@@ -212,13 +229,13 @@ export const Graph = ({
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
+            yQuantileKlein={yQuantileKlein}
+            yQuantileGroß={yQuantileGroß}
             circleRadius={3}
             anzeigeAnAus={anzeigeILM}
-            farbe={"blue"}
-                menuAge={menuAge}
-            selectedScope={selectedScope}
+            farbe={"0,0,255"}
           />
-          <Marks
+          {/* <Marks
             data={KITdata}
             xScale={xScale}
             yScale={yScale}
@@ -288,7 +305,7 @@ export const Graph = ({
             circleRadius={3}
             anzeigeAnAus={anzeigeSZ}
             farbe={"green"}
-          />
+          /> */}
         </g>
       </g>
     </svg>
