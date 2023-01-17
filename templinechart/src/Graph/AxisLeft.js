@@ -14,3 +14,6 @@ export const AxisLeft = ({ yScale, innerWidth, tickOffset = 3 }) =>
       </text>
     </g>
   ));
+
+
+  
