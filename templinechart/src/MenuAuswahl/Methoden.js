@@ -44,7 +44,7 @@ const options = [
 const initialValueAge = "00-04";
 const initialValueAnzeige = "absoluteZahlen";
 const initialValue = "Deutschland";
-const initialValueIntervall = "50%";
+const initialValueIntervall = "keines";
 
 const dateFormatter = timeFormat("%Y-%m-%d");
 const initialDate = dateFormatter(new Date());
@@ -203,15 +203,15 @@ export const MethodenDiv = () => {
           <t className="einführung">Unsicherheitsintervall</t>
           <div id="inhalt">
             <div>
-              95% :{" "}
+              95 % :{" "}
               <input
                 type="radio"
                 name="unsicherheitsintervall"
                 value="95%"
                 onChange={(e) => setIntervall(e.target.value)}
-                  defaultChecked
+                defaultChecked
               />
-              50% :{" "}
+              50 % :{" "}
               <input
                 type="radio"
                 name="unsicherheitsintervall"
@@ -225,7 +225,7 @@ export const MethodenDiv = () => {
                 name="unsicherheitsintervall"
                 value="keines"
                 onChange={(e) => setIntervall(e.target.value)}
-          
+                defaultChecked
               />
             </div>
           </div>
