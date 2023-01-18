@@ -6,11 +6,16 @@
 }
 /* ---------------------------- nicht ändern */
 
-.line {
-  height: 3px;
-  width: 30px;
-  margin-right: 10px;
-}
+/* .line {
+  backgroundColor: "rgb(0,0,0)";
+  height:"1px";
+ /* verticalAlign: "middle"; */
+  /* position: "absolute";
+  left: "250px";
+  top: "28.9px";
+  height: "3.4px";
+  width: "30px" 
+} */
 
 .GraphundMethoden {
   display: flex;
@@ -48,10 +53,13 @@
 #methodenEinblenden {
   cursor: pointer;
   margin-left: 5%;
+
 }
 
 .auswahl {
   cursor: pointer;
+  width: 400px;
+  /* background-color: aliceblue; */
   
 }
 .popup-content {
@@ -60,6 +68,12 @@
   padding: 10px;
   background-color: white;
 }
+
+.NervNicht{
+  position: absolute;
+  width: 400px;
+}
+
 
 
 /* border-width: 1px;

@@ -72,7 +72,7 @@ export const Graph = ({
 
 
   if (isVisible === true) {
-    width = 800;
+    width = 750;
   } else {
     width = 1100;
   }
@@ -175,6 +175,7 @@ export const Graph = ({
   // .range([innerHeight, 0])
 
   // anstatt 0 kann man auch :min(data, yValue) nehmen
+
 
 
   return (
@@ -314,7 +315,7 @@ export const Graph = ({
             yQuantileGroß={yQuantileGroß}
             circleRadius={3}
             anzeigeAnAus={anzeigeSZ}
-            farbe={"0,0,0"}
+            farbe={"0,200,100"}
           />
         </g>
       </g>

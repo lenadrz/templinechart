@@ -44,7 +44,7 @@ const options = [
 const initialValueAge = "00-04";
 const initialValueAnzeige = "absoluteZahlen";
 const initialValue = "Deutschland";
-const initialValueIntervall = "keines";
+const initialValueIntervall = "50%";
 
 const dateFormatter = timeFormat("%Y-%m-%d");
 const initialDate = dateFormatter(new Date());
@@ -105,16 +105,19 @@ export const MethodenDiv = () => {
     setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
   }
 
-  const data = useData("ILM-prop", menuAge); //muss noch gelöscht werden
-  const EPIdata = useData("Epiforecasts-independent", menuAge);
-  const ILMdata = useData("ILM-prop", menuAge);
-  const KITdata = useData("KIT-simple_nowcast", menuAge);
-  const LMUdata = useData("LMU_StaBLab-GAM_nowcast", menuAge);
-  const Nowcastdata = useData("NowcastHub-MeanEnsemble", menuAge);
-  const RIVMdata = useData("RIVM-KEW", menuAge);
-  const RKIdata = useData("RKI-weekly_report", menuAge);
-  const SUdata = useData("SU-hier_bayes", menuAge);
-  const SZdata = useData("SZ-hosp_nowcast", menuAge);
+  const data = useData("ILM-prop", menuAge, selectedScope, intervall ); //muss noch gelöscht werden
+  const EPIdata = useData("Epiforecasts-independent", menuAge,selectedScope, intervall);
+  const ILMdata = useData("ILM-prop", menuAge, selectedScope, intervall);
+  const KITdata = useData("KIT-simple_nowcast", menuAge, selectedScope, intervall);
+  const LMUdata = useData("LMU_StaBLab-GAM_nowcast", menuAge, selectedScope, intervall);
+  const Nowcastdata = useData("NowcastHub-MeanEnsemble", menuAge, selectedScope, intervall);
+  const RIVMdata = useData("RIVM-KEW", menuAge, selectedScope, intervall);
+  const RKIdata = useData("RKI-weekly_report", menuAge, selectedScope, intervall);
+  const SUdata = useData("SU-hier_bayes", menuAge, selectedScope, intervall);
+  const SZdata = useData("SZ-hosp_nowcast", menuAge, selectedScope, intervall);
+
+
+
 
   return (
     <div>
@@ -136,7 +139,8 @@ export const MethodenDiv = () => {
             </div>
           </div>
         </div>
-
+      </div>
+      <div>
         <div id="filter" className="menuOptionen">
           <t className="einführung">Filter</t>
           <div id="inhalt">
@@ -199,21 +203,21 @@ export const MethodenDiv = () => {
           <t className="einführung">Unsicherheitsintervall</t>
           <div id="inhalt">
             <div>
-              95 % :{" "}
+              95% :{" "}
               <input
                 type="radio"
                 name="unsicherheitsintervall"
                 value="95%"
                 onChange={(e) => setIntervall(e.target.value)}
-                defaultChecked
+                  defaultChecked
               />
-              50 % :{" "}
+              50% :{" "}
               <input
                 type="radio"
                 name="unsicherheitsintervall"
                 value="50%"
                 onChange={(e) => setIntervall(e.target.value)}
-                defaultChecked
+              
               />
               keines :{" "}
               <input
@@ -221,7 +225,7 @@ export const MethodenDiv = () => {
                 name="unsicherheitsintervall"
                 value="keines"
                 onChange={(e) => setIntervall(e.target.value)}
-                defaultChecked
+          
               />
             </div>
           </div>
@@ -253,6 +257,7 @@ export const MethodenDiv = () => {
           RKIdata={RKIdata}
           SUdata={SUdata}
           SZdata={SZdata}
+          menuAge={menuAge}
         />
 
         {/* Methoden ----------------------------------------------------------- */}
@@ -291,7 +296,7 @@ export const MethodenDiv = () => {
                 className={`Epiforecast ${isEpiforecast ? "bold" : ""}`}
                 onClick={handleClickEpi}
               >
-                Epiforecast-independent
+                independent Epiforecast
               </p>
             </div>
 
@@ -305,7 +310,7 @@ export const MethodenDiv = () => {
                 className={`ILM ${isILM ? "bold" : ""}`}
                 onClick={handleClickILM}
               >
-                ILM-prop
+                ILM prop
               </p>
             </div>
             <div
@@ -317,7 +322,7 @@ export const MethodenDiv = () => {
                 className={`KIT ${isKIT ? "bold" : ""}`}
                 onClick={handleClickKIT}
               >
-                KIT-simple_nowcast
+                KIT Simple Nowcast
               </p>
             </div>
             <div
@@ -329,7 +334,7 @@ export const MethodenDiv = () => {
                 className={`LMU ${isLMU ? "bold" : ""}`}
                 onClick={handleClickLMU}
               >
-                LMU_StaBlab-GAM_nowcast
+                LMU StaBlab-GAM Nowcast
               </p>
             </div>
             <div
@@ -341,7 +346,7 @@ export const MethodenDiv = () => {
                 className={`Nowcast ${isNowcast ? "bold" : ""}`}
                 onClick={handleClickNowcast}
               >
-                NowcastHub-MeanEnsemble
+                NowcastHub MeanEnsemble
               </p>
             </div>
             <div
@@ -353,9 +358,10 @@ export const MethodenDiv = () => {
                 className={`RIVM ${isRIVM ? "bold" : ""}`}
                 onClick={handleClickRIVM}
               >
-                RIVM-KEW
+                RIVM KEW
               </p>
             </div>
+
             <div
               className={`container ${isRKI ? "moved" : ""}`}
               onClick={handleClickRKI}
@@ -365,7 +371,7 @@ export const MethodenDiv = () => {
                 className={`RKI ${isRKI ? "bold" : ""}`}
                 onClick={handleClickRKI}
               >
-                RKI-weekley_report
+                RKI Weekly Report
               </p>
             </div>
             <div
@@ -374,26 +380,40 @@ export const MethodenDiv = () => {
             >
               {/* <hr className="line" /> */}
               <p className={`SU ${isSU ? "bold" : ""}`} onClick={handleClickSU}>
-                SU-hier_bayes
+                SU hier bayes
               </p>
             </div>
-            <div onClick={handleClickSZ}>
+
+            <div onClick={handleClickSZ} className="NervNicht">
               <p
                 className={`SZ container ${isSZ ? "bold moved" : ""}`}
                 onClick={handleClickSZ}
+                style={{
+                  lineHeight: "1px",
+                  position: "absolute",
+                  right: "170px",
+                  top: "23px",
+                }}
               >
-                SZ-hosp_nowcast
+                SZ Nowcast
               </p>
-              <div
-                className="QuestionMark-container"
-                style={{ display: "flex" }}
-              >
-                <hr
-                  className="line"
-                  style={{ backgroundColor: "rgb(0,0,0)" }}
-                />
-                <QuestionMark explanation="Erklärung" />
-              </div>
+              <hr
+                className="line"
+                style={{
+                  backgroundColor: "rgb(0,200,100)",
+                  height: "1px",
+                  // verticalAlign: "middle",
+                  position: "absolute",
+                  left: "250px",
+                  top: "28.9px",
+                  height: "3.4px",
+                  width: "30px",
+                }}
+              />
+              <QuestionMark
+                explanation="Erklärung"
+                style={{ position: "absolute", left: "1100px" }}
+              />
             </div>
           </div>
         )}
@@ -401,5 +421,3 @@ export const MethodenDiv = () => {
     </div>
   );
 };
-
-
