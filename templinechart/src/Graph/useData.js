@@ -9,7 +9,13 @@ const csvUrl =
   datum +
   "_forecast_data.csv";
 
-export const useData = (methode, menuAge, selectedScope, intervall) => {
+export const useData = (
+  methode,
+  menuAge,
+  selectedScope,
+  intervall,
+  anzeige
+) => {
   const selectedScope1 = "DE";
   let unteresQuantile;
   let oberesQuantile;
@@ -35,10 +41,18 @@ export const useData = (methode, menuAge, selectedScope, intervall) => {
     }
 
     const row = (d) => {
-      //Wie kann ich q0.5 nutzen? Da macht mir nämlich der Punkt ein Problem.
-      d.value = +d.mean;
-      d.quantileKlein = +d[unteresQuantile];
-      d.quantileGroß = +d[oberesQuantile];
+      //Muss noch umgeschrieben werden!!!!
+
+      if (anzeige === "hunderttausend") {
+        d.value = +d.mean / 100000;
+        d.quantileKlein = +d[unteresQuantile] / 100000;
+        d.quantileGroß = +d[oberesQuantile] / 100000;
+      } else {
+        d.value = +d.mean;
+        d.quantileKlein = +d[unteresQuantile];
+        d.quantileGroß = +d[oberesQuantile];
+      }
+
       d.date = new Date(d.target_end_date);
       return d;
     };
@@ -52,7 +66,7 @@ export const useData = (methode, menuAge, selectedScope, intervall) => {
       );
       setData(filteredData);
     });
-  }, [menuAge, selectedScope, intervall]);
+  }, [menuAge, selectedScope, intervall, anzeige]);
 
   return data;
 };
