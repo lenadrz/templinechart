@@ -207,7 +207,7 @@ export const MethodenDiv = () => {
               <input
                 type="radio"
                 name="unsicherheitsintervall"
-                value="95%"
+                value="FÜNFundNEUNZIG"
                 onChange={(e) => setIntervall(e.target.value)}
                 defaultChecked
               />
@@ -215,7 +215,7 @@ export const MethodenDiv = () => {
               <input
                 type="radio"
                 name="unsicherheitsintervall"
-                value="50%"
+                value="FÜNFZIG"
                 onChange={(e) => setIntervall(e.target.value)}
               
               />
