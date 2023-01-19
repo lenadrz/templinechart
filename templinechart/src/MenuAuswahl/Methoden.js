@@ -6,9 +6,9 @@ import "./DesignMethoden.css";
 import { Dropdown } from "./Dropdown";
 import { color, timeFormat } from "d3";
 import { useData } from "../Graph/useData";
-import { useDataFede } from "../Graph/useData";
 import { QuestionMark } from "./QuestionMark";
 import {Tabelle} from "../Graph/Tabelle";
+import { useDataFede } from "../Graph/useDataFede"
 
 export default QuestionMark;
 
@@ -140,6 +140,15 @@ export const MethodenDiv = () => {
       console.log(isCollapsed)
     }
 
+
+  const realData = useDataFede( "ILM-prop",
+  menuAge,
+  selectedScope,
+  intervall,
+  anzeige,
+  date);
+
+  console.log(realData);
 
   const data = useData(
     "ILM-prop",
@@ -363,6 +372,7 @@ export const MethodenDiv = () => {
           SZdata={SZdata}
           menuAge={menuAge}
           selectedScope={selectedScope}
+          realData = {realData}
         />
 
         {/* Methoden ----------------------------------------------------------- */}

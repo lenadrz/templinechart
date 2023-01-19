@@ -6,6 +6,8 @@ import { AxisLeft } from "./AxisLeft";
 import { Marks } from "./Marks";
 import "./Graph.css";
 import { line, curveNatural } from "d3";
+import { MarksFede } from "./MarksFede"
+
 
 
 const height = 500;
@@ -27,11 +29,6 @@ export const Graph = ({
   isRKI,
   isSU,
   isSZ,
-  menuAge, 
-  anzeige,
-  selectedScope, 
-  date, 
-  intervall,
   data,
   EPIdata,
   ILMdata,
@@ -41,10 +38,10 @@ export const Graph = ({
   RIVMdata,
   RKIdata,
   SUdata,
-  SZdata
+  SZdata,
+  realData
 }) => {
   let width = 800;
-
 
   let anzeigeDatenstand;
 
@@ -57,19 +54,6 @@ export const Graph = ({
   let anzeigeRKI;
   let anzeigeSU;
   let anzeigeSZ;
-
-  // const data = useData("ILM-prop", menuAge); //muss noch gelöscht werden
-  // const EPIdata = useData("Epiforecasts-independent", menuAge);
-  // const ILMdata = useData("ILM-prop", menuAge);
-  // const KITdata = useData("KIT-simple_nowcast", menuAge);
-  // const LMUdata = useData("LMU_StaBLab-GAM_nowcast", menuAge);
-  // const Nowcastdata = useData("NowcastHub-MeanEnsemble", menuAge);
-  // const RIVMdata = useData("RIVM-KEW", menuAge);
-  // const RKIdata = useData("RKI-weekly_report", menuAge);
-  // const SUdata = useData("SU-hier_bayes", menuAge );
-  // const SZdata = useData("SZ-hosp_nowcast", menuAge);
-
-
 
   if (isVisible === true) {
     width = 750;
@@ -206,6 +190,17 @@ export const Graph = ({
           {xAxisLabel}
         </text>
         <g className="mark">
+
+        <MarksFede
+            data={realData}
+            xScale={xScale}
+            yScale={yScale}
+            xValue={xValue}
+            yValue={yValue}
+            circleRadius={3}
+            anzeigeAnAus={anzeigeEpiforecast}
+            farbe={"blue"}
+          />
 
           <Marks
             data={EPIdata}
