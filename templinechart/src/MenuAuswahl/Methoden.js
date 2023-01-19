@@ -342,6 +342,7 @@ export const MethodenDiv = () => {
         </div>
 
         {isVisible && (
+          <table>
           <div className="auswahl">
             <div
               className={`container ${isDatenstand ? "moved" : ""}`}
@@ -355,6 +356,8 @@ export const MethodenDiv = () => {
               </p>
             </div>
 
+            <tr>
+            
             <div
               className={`container ${isEpiforecast ? "moved" : ""}`}
               onClick={handleClickEpi}
@@ -368,14 +371,28 @@ export const MethodenDiv = () => {
                   width: "30px",
                 }}
               />
+
+              {/* karina*/}
+              
+              <td>
               <p
                 className={`Epiforecast ${isEpiforecast ? "bold" : ""}`}
                 onClick={handleClickEpi}
               >
                 independent Epiforecast
               </p>
-              <QuestionMark explanation="Erklärung" />
+              </td> 
+              <td>
+              <div class="hovertext" data-hover="hover text 1">
+                <div>
+                  <p>?</p>
+                </div>
+              </div>
+              </td>
             </div>
+            
+            </tr>
+            {/* karina*/}
 
             <div
               className={`container ${isILM ? "moved" : ""}`}
@@ -554,12 +571,15 @@ export const MethodenDiv = () => {
                   width: "30px",
                 }}
               />
+              
+              
               <QuestionMark
                 explanation="Erklärung"
                 style={{ position: "absolute", left: "1100px" }}
               />
             </div>
           </div>
+          </table>
         )}
       </div>
     </div>

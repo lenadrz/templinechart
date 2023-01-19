@@ -22,15 +22,9 @@ export function QuestionMark({ explanation }) {
 
   return (
     <div>
-      <div
-        onMouseEnter={() => setShowPopup(true)}
-        onMouseLeave={() => setShowPopup(false)}
-      >
-        <p style={questionMarkStyle}>?</p>
-      </div>
-      <div style={popupContainerStyle}>
-        <p>{explanation}</p>
-      </div>
+      
+      
     </div>
   );
 }
+
