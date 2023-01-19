@@ -123,6 +123,24 @@ export const MethodenDiv = () => {
     setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
   }
 
+  const DataTabelle = useData(
+    dataTabelle,
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
+
+ 
+    const [isCollapsed, setIsCollapsed] = useState(false);
+  
+    const toggleCollapse = () => {
+      setIsCollapsed(!isCollapsed);
+      console.log(isCollapsed)
+    }
+
+
   const data = useData(
     "ILM-prop",
     menuAge,
@@ -203,6 +221,8 @@ export const MethodenDiv = () => {
     anzeige,
     date
   );
+
+
 
   return (
     <div>
@@ -609,20 +629,8 @@ export const MethodenDiv = () => {
 
       <section id="tabelle" style={{ position: "absolute", top: "600px" }}>
         <div class="table">
-          <p>
-            <a
-              class="btn btn-light btn-table"
-              data-bs-toggle="collapse"
-              href="#collapseExample"
-              role="button"
-              aria-expanded="false"
-              aria-controls="collapseExample"
-            >
-              <i class="fa-solid fa-caret-down"></i> Tabelle anzeigen
-            </a>
-          </p>
-
-          <div class="collapse collapse-table show" id="collapseExample">
+       <button onClick={toggleCollapse}> Tabelle anzeigen</button>
+          {isCollapsed &&  (   <div class={`collapse ${!isCollapsed ? 'show' : ''}`} id="collapseExample">
             <div class="card card-body card-table">
 
             <Dropdown
@@ -633,15 +641,16 @@ export const MethodenDiv = () => {
               />
 
                   <Tabelle
-                    dataTabelle={dataTabelle}
+                    // Data={DataTabelle}
                   />
             
             </div>
 
-
-          </div>
+          </div>)}
         </div>
       </section>
+
+
     </div>
   );
 };
