@@ -8,6 +8,7 @@ import { color, timeFormat } from "d3";
 import { useData } from "../Graph/useData";
 import { useDataFede } from "../Graph/useData";
 import { QuestionMark } from "./QuestionMark";
+import {Tabelle} from "../Graph/Tabelle";
 
 export default QuestionMark;
 
@@ -41,10 +42,25 @@ const options = [
   { value: "DE-TH", label: "Thüringen" },
 ];
 
+const methodenTabelle = [
+  { value: "Epiforecasts-independent", label: "independent Epiforecasts" },
+  { value: "ILM-prop", label: "ILM prop" },
+  { value: "KIT-simple_nowcast", label: "KIT Simple Nowcast" },
+  { value: "LMU_StaBLab-GAM_nowcast", label: "LMU StaBLab-GAM Nowcast" },
+  { value: "NowcastHub-MeanEnsemble", label: "NowcastHub MeanEnsemble" },
+  { value: "RIVM-KEW", label: "RIVM Weekly Report" },
+  { value: "RKI-weekly_report", label: "RKI Weekly Report" },
+  { value: "SU-hier_bayes", label: "SU hier bayes" },
+  { value: "SZ-hosp_nowcast", label: "SZ Nowcast" },
+]
+
+
 const initialValueAge = "00-04";
 const initialValueAnzeige = "absoluteZahlen";
 const initialValue = "Deutschland";
 const initialValueIntervall = "keines";
+
+const initialValueTabelle = "KIT-simple_nowcast";
 
 const dateFormatter = timeFormat("%Y-%m-%d");
 const initialDate = dateFormatter(new Date());
@@ -99,6 +115,8 @@ export const MethodenDiv = () => {
   const [intervall, setIntervall] = useState(initialValueIntervall);
   const [isVisible, setIsVisible] = useState(false);
   const [label, setLabel] = useState("Methoden einblenden");
+
+  const [dataTabelle, setdataTabelle] =useState(initialValueTabelle);
 
   function handleClick() {
     setIsVisible(!isVisible);
@@ -324,6 +342,7 @@ export const MethodenDiv = () => {
           SUdata={SUdata}
           SZdata={SZdata}
           menuAge={menuAge}
+          selectedScope={selectedScope}
         />
 
         {/* Methoden ----------------------------------------------------------- */}
@@ -343,247 +362,286 @@ export const MethodenDiv = () => {
 
         {isVisible && (
           <table>
-          <div className="auswahl">
-            <div
-              className={`container ${isDatenstand ? "moved" : ""}`}
-              onClick={handleClickDatenstand}
-            >
-              <p
-                className={`datenstand ${isDatenstand ? "bold" : ""}`}
+            <div className="auswahl">
+              <div
+                className={`container ${isDatenstand ? "moved" : ""}`}
                 onClick={handleClickDatenstand}
               >
-                Datenstand
-              </p>
-            </div>
-
-            <tr>
-            
-            <div
-              className={`container ${isEpiforecast ? "moved" : ""}`}
-              onClick={handleClickEpi}
-            >
-            <td class="linelayout">
-              <hr
-                className="line"
-                style={{
-                  backgroundColor: "rgb(0,200,100)",
-                  height: "1px",
-                  height: "3.4px",
-                  width: "30px",
-                }}
-              />
-            </td>
-
-              {/* karina*/}
-              
-              <td>
-              <p
-                className={`Epiforecast ${isEpiforecast ? "bold" : ""}`}
-                onClick={handleClickEpi}
-              >
-                independent Epiforecast
-              </p>
-              </td> 
-              <td>
-              <div class="hovertext questionmark" data-hover="hover text 1">
-                <div class= "">
-                  <p > ?</p>
-                </div>
+                <p
+                  className={`datenstand ${isDatenstand ? "bold" : ""}`}
+                  onClick={handleClickDatenstand}
+                >
+                  Datenstand
+                </p>
               </div>
-              </td>
-            </div>
-            
-            </tr>
-            {/* karina*/}
 
-            <div
-              className={`container ${isILM ? "moved" : ""}`}
-              onClick={handleClickILM}
-            >
-              <hr
-                className="line"
-                style={{
-                  backgroundColor: "rgb(0,200,100)",
-                  height: "1px",
-                  height: "3.4px",
-                  width: "30px",
-                }}
-              />
-              <p
-                className={`ILM ${isILM ? "bold" : ""}`}
+              <tr>
+                <div
+                  className={`container ${isEpiforecast ? "moved" : ""}`}
+                  onClick={handleClickEpi}
+                >
+                  <td class="linelayout">
+                    <hr
+                      className="line"
+                      style={{
+                        backgroundColor: "rgb(0,200,100)",
+                        height: "1px",
+                        height: "3.4px",
+                        width: "30px",
+                      }}
+                    />
+                  </td>
+
+                  {/* karina*/}
+
+                  <td>
+                    <p
+                      className={`Epiforecast ${isEpiforecast ? "bold" : ""}`}
+                      onClick={handleClickEpi}
+                    >
+                      independent Epiforecast
+                    </p>
+                  </td>
+                  <td>
+                    <div
+                      class="hovertext questionmark"
+                      data-hover="hover text 1"
+                    >
+                      <div class="">
+                        <p> ?</p>
+                      </div>
+                    </div>
+                  </td>
+                </div>
+              </tr>
+              {/* karina*/}
+
+              <div
+                className={`container ${isILM ? "moved" : ""}`}
                 onClick={handleClickILM}
               >
-                ILM prop
-              </p>
-              <QuestionMark explanation="Erklärung" />
-            </div>
+                <hr
+                  className="line"
+                  style={{
+                    backgroundColor: "rgb(0,200,100)",
+                    height: "1px",
+                    height: "3.4px",
+                    width: "30px",
+                  }}
+                />
+                <p
+                  className={`ILM ${isILM ? "bold" : ""}`}
+                  onClick={handleClickILM}
+                >
+                  ILM prop
+                </p>
+                <QuestionMark explanation="Erklärung" />
+              </div>
 
-            <div
-              className={`container ${isKIT ? "moved" : ""}`}
-              onClick={handleClickKIT}
-            >
-              <hr
-                className="line"
-                style={{
-                  backgroundColor: "rgb(0,200,100)",
-                  height: "1px",
-                  height: "3.4px",
-                  width: "30px",
-                }}
-              />
-              <p
-                className={`KIT ${isKIT ? "bold" : ""}`}
+              <div
+                className={`container ${isKIT ? "moved" : ""}`}
                 onClick={handleClickKIT}
               >
-                KIT Simple Nowcast
-              </p>
-              <QuestionMark explanation="Erklärung" />
-            </div>
+                <hr
+                  className="line"
+                  style={{
+                    backgroundColor: "rgb(0,200,100)",
+                    height: "1px",
+                    height: "3.4px",
+                    width: "30px",
+                  }}
+                />
+                <p
+                  className={`KIT ${isKIT ? "bold" : ""}`}
+                  onClick={handleClickKIT}
+                >
+                  KIT Simple Nowcast
+                </p>
+                <QuestionMark explanation="Erklärung" />
+              </div>
 
-            <div
-              className={`container ${isLMU ? "moved" : ""}`}
-              onClick={handleClickLMU}
-            >
-              <hr
-                className="line"
-                style={{
-                  backgroundColor: "rgb(0,200,100)",
-                  height: "1px",
-                  height: "3.4px",
-                  width: "30px",
-                }}
-              />
-              <p
-                className={`LMU ${isLMU ? "bold" : ""}`}
+              <div
+                className={`container ${isLMU ? "moved" : ""}`}
                 onClick={handleClickLMU}
               >
-                LMU StaBlab-GAM Nowcast
-              </p>
-              <QuestionMark explanation="Erklärung" />
-            </div>
+                <hr
+                  className="line"
+                  style={{
+                    backgroundColor: "rgb(0,200,100)",
+                    height: "1px",
+                    height: "3.4px",
+                    width: "30px",
+                  }}
+                />
+                <p
+                  className={`LMU ${isLMU ? "bold" : ""}`}
+                  onClick={handleClickLMU}
+                >
+                  LMU StaBlab-GAM Nowcast
+                </p>
+                <QuestionMark explanation="Erklärung" />
+              </div>
 
-            <div
-              className={`container ${isNowcast ? "moved" : ""}`}
-              onClick={handleClickNowcast}
-            >
-              <hr
-                className="line"
-                style={{
-                  backgroundColor: "rgb(0,200,100)",
-                  height: "1px",
-                  height: "3.4px",
-                  width: "30px",
-                }}
-              />
-              <p
-                className={`Nowcast ${isNowcast ? "bold" : ""}`}
+              <div
+                className={`container ${isNowcast ? "moved" : ""}`}
                 onClick={handleClickNowcast}
               >
-                NowcastHub MeanEnsemble
-              </p>
-              <QuestionMark explanation="Erklärung" />
-            </div>
+                <hr
+                  className="line"
+                  style={{
+                    backgroundColor: "rgb(0,200,100)",
+                    height: "1px",
+                    height: "3.4px",
+                    width: "30px",
+                  }}
+                />
+                <p
+                  className={`Nowcast ${isNowcast ? "bold" : ""}`}
+                  onClick={handleClickNowcast}
+                >
+                  NowcastHub MeanEnsemble
+                </p>
+                <QuestionMark explanation="Erklärung" />
+              </div>
 
-            <div
-              className={`container ${isRIVM ? "moved" : ""}`}
-              onClick={handleClickRIVM}
-            >
-              <hr
-                className="line"
-                style={{
-                  backgroundColor: "rgb(0,200,100)",
-                  height: "1px",
-                  height: "3.4px",
-                  width: "30px",
-                }}
-              />
-              <p
-                className={`RIVM ${isRIVM ? "bold" : ""}`}
+              <div
+                className={`container ${isRIVM ? "moved" : ""}`}
                 onClick={handleClickRIVM}
               >
-                RIVM Weekly Report
-              </p>
-              <QuestionMark explanation="Erklärung" />
-            </div>
+                <hr
+                  className="line"
+                  style={{
+                    backgroundColor: "rgb(0,200,100)",
+                    height: "1px",
+                    height: "3.4px",
+                    width: "30px",
+                  }}
+                />
+                <p
+                  className={`RIVM ${isRIVM ? "bold" : ""}`}
+                  onClick={handleClickRIVM}
+                >
+                  RIVM Weekly Report
+                </p>
+                <QuestionMark explanation="Erklärung" />
+              </div>
 
-            <div
-              className={`container ${isRKI ? "moved" : ""}`}
-              onClick={handleClickRKI}
-            >
-              <hr
-                className="line"
-                style={{
-                  backgroundColor: "rgb(0,200,100)",
-                  height: "1px",
-                  height: "3.4px",
-                  width: "30px",
-                }}
-              />
-              <p
-                className={`RKI ${isRKI ? "bold" : ""}`}
+              <div
+                className={`container ${isRKI ? "moved" : ""}`}
                 onClick={handleClickRKI}
               >
-                RKI Weekly Report
-              </p>
-              <QuestionMark explanation="Erklärung" />
-            </div>
+                <hr
+                  className="line"
+                  style={{
+                    backgroundColor: "rgb(0,200,100)",
+                    height: "1px",
+                    height: "3.4px",
+                    width: "30px",
+                  }}
+                />
+                <p
+                  className={`RKI ${isRKI ? "bold" : ""}`}
+                  onClick={handleClickRKI}
+                >
+                  RKI Weekly Report
+                </p>
+                <QuestionMark explanation="Erklärung" />
+              </div>
 
-            <div
-              className={`container ${isSU ? "moved" : ""}`}
-              onClick={handleClickSU}
-            >
-              <hr
-                className="line"
-                style={{
-                  backgroundColor: "rgb(0,200,100)",
-                  height: "1px",
-                  height: "3.4px",
-                  width: "30px",
-                }}
-              />
-              <p className={`SU ${isSU ? "bold" : ""}`} onClick={handleClickSU}>
-                SU hier bayes
-              </p>
-              <QuestionMark explanation="Erklärung" />
-            </div>
-
-            <div onClick={handleClickSZ} className="NervNicht">
-              <p
-                className={`SZ container ${isSZ ? "bold moved" : ""}`}
-                onClick={handleClickSZ}
-                style={{
-                  lineHeight: "1px",
-                  position: "absolute",
-                  right: "170px",
-                  top: "23px",
-                }}
+              <div
+                className={`container ${isSU ? "moved" : ""}`}
+                onClick={handleClickSU}
               >
-                SZ Nowcast
-              </p>
-              <hr
-                className="line"
-                style={{
-                  backgroundColor: "rgb(0,200,100)",
-                  height: "1px",
-                  // verticalAlign: "middle",
-                  position: "absolute",
-                  left: "250px",
-                  top: "28.9px",
-                  height: "3.4px",
-                  width: "30px",
-                }}
-              />
-              
-              
-              <QuestionMark
-                explanation="Erklärung"
-                style={{ position: "absolute", left: "1100px" }}
-              />
+                <hr
+                  className="line"
+                  style={{
+                    backgroundColor: "rgb(0,200,100)",
+                    height: "1px",
+                    height: "3.4px",
+                    width: "30px",
+                  }}
+                />
+                <p
+                  className={`SU ${isSU ? "bold" : ""}`}
+                  onClick={handleClickSU}
+                >
+                  SU hier bayes
+                </p>
+                <QuestionMark explanation="Erklärung" />
+              </div>
+
+              <div onClick={handleClickSZ} className="NervNicht">
+                <p
+                  className={`SZ container ${isSZ ? "bold moved" : ""}`}
+                  onClick={handleClickSZ}
+                  style={{
+                    lineHeight: "1px",
+                    position: "absolute",
+                    right: "170px",
+                    top: "23px",
+                  }}
+                >
+                  SZ Nowcast
+                </p>
+                <hr
+                  className="line"
+                  style={{
+                    backgroundColor: "rgb(0,200,100)",
+                    height: "1px",
+                    // verticalAlign: "middle",
+                    position: "absolute",
+                    left: "250px",
+                    top: "28.9px",
+                    height: "3.4px",
+                    width: "30px",
+                  }}
+                />
+
+                <QuestionMark
+                  explanation="Erklärung"
+                  style={{ position: "absolute", left: "1100px" }}
+                />
+              </div>
             </div>
-          </div>
           </table>
         )}
       </div>
+
+      <section id="tabelle" style={{ position: "absolute", top: "600px" }}>
+        <div class="table">
+          <p>
+            <a
+              class="btn btn-light btn-table"
+              data-bs-toggle="collapse"
+              href="#collapseExample"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              <i class="fa-solid fa-caret-down"></i> Tabelle anzeigen
+            </a>
+          </p>
+
+          <div class="collapse collapse-table show" id="collapseExample">
+            <div class="card card-body card-table">
+
+            <Dropdown
+                options={methodenTabelle}
+                id="methodenSelectTabelle"
+                dataTabelle={dataTabelle}
+                onSelectedValueChange={setdataTabelle}
+              />
+
+                  <Tabelle
+                    dataTabelle={dataTabelle}
+                  />
+            
+            </div>
+
+
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
