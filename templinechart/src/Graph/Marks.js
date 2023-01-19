@@ -7,7 +7,6 @@ export const Marks = ({
   yScale,
   xValue,
   yValue,
-  // tooltipFormat,
   circleRadius,
   anzeigeAnAus,
   yQuantileGroß,

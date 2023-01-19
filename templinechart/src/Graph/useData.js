@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { csv } from "d3";
 import "./Graph.css";
+import {useEinwohnerZahlen} from  "./useEinwohnerZahlen";
 
 const datum = "2023-01-10";
 
@@ -14,19 +15,24 @@ export const useData = (
   menuAge,
   selectedScope,
   intervall,
-  anzeige
+  anzeige,
+  date
 ) => {
-  const selectedScope1 = "DE";
   let unteresQuantile;
   let oberesQuantile;
 
-  // const unteresQuantile = "q0.025";
-  // const oberesQuantile = "q0.975";
+  let populationTabelle = useEinwohnerZahlen(menuAge,selectedScope);
+
+  console.log(populationTabelle);
+  
+  // let population = populationTabelle[0].population;
+
+
+  // d.value = (+d.mean/+population) * 100000;
+  // d.quantileKlein = (+[unteresQuantile]/population) * 100000;
+  // d.quantileGroß = (+d[oberesQuantile]/population) * 100000;
 
   const [data, setData] = useState(null);
-  let intervall1 = intervall;
-
-  console.log(intervall);
 
   useEffect(() => {
     if (intervall === "FÜNFZIG") {
@@ -41,12 +47,11 @@ export const useData = (
     }
 
     const row = (d) => {
-      //Muss noch umgeschrieben werden!!!!
-
+  
       if (anzeige === "hunderttausend") {
-        d.value = +d.mean / 100000;
-        d.quantileKlein = +d[unteresQuantile] / 100000;
-        d.quantileGroß = +d[oberesQuantile] / 100000;
+        d.value = (+d.mean) * 100000;
+        d.quantileKlein = (+[unteresQuantile]) * 100000;
+        d.quantileGroß = (+d[oberesQuantile]) * 100000;
       } else {
         d.value = +d.mean;
         d.quantileKlein = +d[unteresQuantile];
@@ -61,12 +66,13 @@ export const useData = (
       const filteredData = loadedData.filter(
         (d) =>
           d.model === methode &&
-          d.location === selectedScope1 &&
+          d.location ===  "DE" &&
           d.age_group === menuAge
+  
       );
       setData(filteredData);
     });
-  }, [menuAge, selectedScope, intervall, anzeige]);
+  }, [methode, menuAge, selectedScope, intervall, anzeige]);
 
   return data;
 };

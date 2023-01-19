@@ -105,19 +105,16 @@ export const MethodenDiv = () => {
     setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
   }
 
-  const data = useData("ILM-prop", menuAge, selectedScope, intervall, anzeige ); //muss noch gelöscht werden
-  const EPIdata = useData("Epiforecasts-independent", menuAge,selectedScope, intervall, anzeige);
-  const ILMdata = useData("ILM-prop", menuAge, selectedScope, intervall, anzeige);
-  const KITdata = useData("KIT-simple_nowcast", menuAge, selectedScope, intervall,  anzeige);
-  const LMUdata = useData("LMU_StaBLab-GAM_nowcast", menuAge, selectedScope, intervall, anzeige);
-  const Nowcastdata = useData("NowcastHub-MeanEnsemble", menuAge, selectedScope, intervall, anzeige);
-  const RIVMdata = useData("RIVM-KEW", menuAge, selectedScope, intervall,anzeige);
-  const RKIdata = useData("RKI-weekly_report", menuAge, selectedScope, intervall,anzeige);
-  const SUdata = useData("SU-hier_bayes", menuAge, selectedScope, intervall,anzeige);
-  const SZdata = useData("SZ-hosp_nowcast", menuAge, selectedScope, intervall, anzeige);
-
-
-
+  const data = useData("ILM-prop", menuAge, selectedScope, intervall, anzeige, date ); //muss noch gelöscht werden
+  const EPIdata = useData("Epiforecasts-independent", menuAge,selectedScope, intervall, anzeige, date);
+  const ILMdata = useData("ILM-prop", menuAge, selectedScope, intervall, anzeige, date);
+  const KITdata = useData("KIT-simple_nowcast", menuAge, selectedScope, intervall,  anzeige, date);
+  const LMUdata = useData("LMU_StaBLab-GAM_nowcast", menuAge, selectedScope, intervall, anzeige, date);
+  const Nowcastdata = useData("NowcastHub-MeanEnsemble", menuAge, selectedScope, intervall, anzeige, date);
+  const RIVMdata = useData("RIVM-KEW", menuAge, selectedScope, intervall,anzeige, date);
+  const RKIdata = useData("RKI-weekly_report", menuAge, selectedScope, intervall,anzeige, date);
+  const SUdata = useData("SU-hier_bayes", menuAge, selectedScope, intervall,anzeige, date);
+  const SZdata = useData("SZ-hosp_nowcast", menuAge, selectedScope, intervall, anzeige,date);
 
   return (
     <div>
