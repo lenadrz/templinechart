@@ -59,9 +59,20 @@
 .auswahl {
   cursor: pointer;
   width: 400px;
+  position: absolute;
+   right: 10px;
   /* background-color: aliceblue; */
   
 }
+
+.moved{
+ background-color: rgba(177, 177, 177, 0.326);
+ border-radius: 1px;
+ border-color: grey;
+ border-radius: 5px;
+}
+  
+
 .popup-content {
   border: 1px solid gray;
   box-shadow: 2px 2px 5px gray;
@@ -79,3 +90,19 @@
 /* border-width: 1px;
     border-style: solid;
     border-color: black; */
+
+
+ /* Lines */
+ .linelayout{
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-top: 11%;
+  margin-bottom: 10%;
+
+ }
+
+ .questionmark{
+  
+  padding-left: 30px;
+
+ }

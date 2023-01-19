@@ -362,6 +362,7 @@ export const MethodenDiv = () => {
               className={`container ${isEpiforecast ? "moved" : ""}`}
               onClick={handleClickEpi}
             >
+            <td class="linelayout">
               <hr
                 className="line"
                 style={{
@@ -371,6 +372,7 @@ export const MethodenDiv = () => {
                   width: "30px",
                 }}
               />
+            </td>
 
               {/* karina*/}
               
@@ -383,9 +385,9 @@ export const MethodenDiv = () => {
               </p>
               </td> 
               <td>
-              <div class="hovertext" data-hover="hover text 1">
-                <div>
-                  <p>?</p>
+              <div class="hovertext questionmark" data-hover="hover text 1">
+                <div class= "">
+                  <p > ?</p>
                 </div>
               </div>
               </td>
