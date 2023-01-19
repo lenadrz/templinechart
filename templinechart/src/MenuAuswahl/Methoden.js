@@ -367,9 +367,10 @@ export const MethodenDiv = () => {
                 className="line"
                 style={{
                   backgroundColor: "rgb(0,200,100)",
-                  height: "1px",
                   height: "3.4px",
                   width: "30px",
+                  
+                  
                 }}
               />
             </td>

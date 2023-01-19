@@ -70,6 +70,8 @@
  border-radius: 1px;
  border-color: grey;
  border-radius: 5px;
+ padding-right: 8px;
+ padding-left: 8px;
 }
   
 
@@ -93,6 +95,11 @@
 
 
  /* Lines */
+ .line{
+  position:relative;
+    top: 5px;
+ }
+ 
  .linelayout{
   padding-right: 10px;
   padding-left: 10px;
