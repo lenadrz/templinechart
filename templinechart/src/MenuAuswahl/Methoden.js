@@ -105,16 +105,86 @@ export const MethodenDiv = () => {
     setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
   }
 
-  const data = useData("ILM-prop", menuAge, selectedScope, intervall, anzeige, date ); //muss noch gelöscht werden
-  const EPIdata = useData("Epiforecasts-independent", menuAge,selectedScope, intervall, anzeige, date);
-  const ILMdata = useData("ILM-prop", menuAge, selectedScope, intervall, anzeige, date);
-  const KITdata = useData("KIT-simple_nowcast", menuAge, selectedScope, intervall,  anzeige, date);
-  const LMUdata = useData("LMU_StaBLab-GAM_nowcast", menuAge, selectedScope, intervall, anzeige, date);
-  const Nowcastdata = useData("NowcastHub-MeanEnsemble", menuAge, selectedScope, intervall, anzeige, date);
-  const RIVMdata = useData("RIVM-KEW", menuAge, selectedScope, intervall,anzeige, date);
-  const RKIdata = useData("RKI-weekly_report", menuAge, selectedScope, intervall,anzeige, date);
-  const SUdata = useData("SU-hier_bayes", menuAge, selectedScope, intervall,anzeige, date);
-  const SZdata = useData("SZ-hosp_nowcast", menuAge, selectedScope, intervall, anzeige,date);
+  const data = useData(
+    "ILM-prop",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  ); //muss noch gelöscht werden
+  const EPIdata = useData(
+    "Epiforecasts-independent",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
+  const ILMdata = useData(
+    "ILM-prop",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
+  const KITdata = useData(
+    "KIT-simple_nowcast",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
+  const LMUdata = useData(
+    "LMU_StaBLab-GAM_nowcast",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
+  const Nowcastdata = useData(
+    "NowcastHub-MeanEnsemble",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
+  const RIVMdata = useData(
+    "RIVM-KEW",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
+  const RKIdata = useData(
+    "RKI-weekly_report",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
+  const SUdata = useData(
+    "SU-hier_bayes",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
+  const SZdata = useData(
+    "SZ-hosp_nowcast",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
 
   return (
     <div>
@@ -214,7 +284,6 @@ export const MethodenDiv = () => {
                 name="unsicherheitsintervall"
                 value="FÜNFZIG"
                 onChange={(e) => setIntervall(e.target.value)}
-              
               />
               keines :{" "}
               <input
@@ -285,100 +354,178 @@ export const MethodenDiv = () => {
                 Datenstand
               </p>
             </div>
+
             <div
               className={`container ${isEpiforecast ? "moved" : ""}`}
               onClick={handleClickEpi}
             >
+              <hr
+                className="line"
+                style={{
+                  backgroundColor: "rgb(0,200,100)",
+                  height: "1px",
+                  height: "3.4px",
+                  width: "30px",
+                }}
+              />
               <p
                 className={`Epiforecast ${isEpiforecast ? "bold" : ""}`}
                 onClick={handleClickEpi}
               >
                 independent Epiforecast
               </p>
+              <QuestionMark explanation="Erklärung" />
             </div>
 
-            {/* <hr className="line" /> */}
             <div
               className={`container ${isILM ? "moved" : ""}`}
               onClick={handleClickILM}
             >
-              {/* <hr className="line" /> */}
+              <hr
+                className="line"
+                style={{
+                  backgroundColor: "rgb(0,200,100)",
+                  height: "1px",
+                  height: "3.4px",
+                  width: "30px",
+                }}
+              />
               <p
                 className={`ILM ${isILM ? "bold" : ""}`}
                 onClick={handleClickILM}
               >
                 ILM prop
               </p>
+              <QuestionMark explanation="Erklärung" />
             </div>
+
             <div
               className={`container ${isKIT ? "moved" : ""}`}
               onClick={handleClickKIT}
             >
-              {/* <hr className="line" /> */}
+              <hr
+                className="line"
+                style={{
+                  backgroundColor: "rgb(0,200,100)",
+                  height: "1px",
+                  height: "3.4px",
+                  width: "30px",
+                }}
+              />
               <p
                 className={`KIT ${isKIT ? "bold" : ""}`}
                 onClick={handleClickKIT}
               >
                 KIT Simple Nowcast
               </p>
+              <QuestionMark explanation="Erklärung" />
             </div>
+
             <div
               className={`container ${isLMU ? "moved" : ""}`}
               onClick={handleClickLMU}
             >
-              {/* <hr className="line" /> */}
+              <hr
+                className="line"
+                style={{
+                  backgroundColor: "rgb(0,200,100)",
+                  height: "1px",
+                  height: "3.4px",
+                  width: "30px",
+                }}
+              />
               <p
                 className={`LMU ${isLMU ? "bold" : ""}`}
                 onClick={handleClickLMU}
               >
                 LMU StaBlab-GAM Nowcast
               </p>
+              <QuestionMark explanation="Erklärung" />
             </div>
+
             <div
               className={`container ${isNowcast ? "moved" : ""}`}
               onClick={handleClickNowcast}
             >
-              {/* <hr className="line" /> */}
+              <hr
+                className="line"
+                style={{
+                  backgroundColor: "rgb(0,200,100)",
+                  height: "1px",
+                  height: "3.4px",
+                  width: "30px",
+                }}
+              />
               <p
                 className={`Nowcast ${isNowcast ? "bold" : ""}`}
                 onClick={handleClickNowcast}
               >
                 NowcastHub MeanEnsemble
               </p>
+              <QuestionMark explanation="Erklärung" />
             </div>
+
             <div
               className={`container ${isRIVM ? "moved" : ""}`}
               onClick={handleClickRIVM}
             >
-              {/* <hr className="line" /> */}
+              <hr
+                className="line"
+                style={{
+                  backgroundColor: "rgb(0,200,100)",
+                  height: "1px",
+                  height: "3.4px",
+                  width: "30px",
+                }}
+              />
               <p
                 className={`RIVM ${isRIVM ? "bold" : ""}`}
                 onClick={handleClickRIVM}
               >
-                RIVM KEW
+                RIVM Weekly Report
               </p>
+              <QuestionMark explanation="Erklärung" />
             </div>
 
             <div
               className={`container ${isRKI ? "moved" : ""}`}
               onClick={handleClickRKI}
             >
-              {/* <hr className="line" /> */}
+              <hr
+                className="line"
+                style={{
+                  backgroundColor: "rgb(0,200,100)",
+                  height: "1px",
+                  height: "3.4px",
+                  width: "30px",
+                }}
+              />
               <p
                 className={`RKI ${isRKI ? "bold" : ""}`}
                 onClick={handleClickRKI}
               >
                 RKI Weekly Report
               </p>
+              <QuestionMark explanation="Erklärung" />
             </div>
+
             <div
               className={`container ${isSU ? "moved" : ""}`}
               onClick={handleClickSU}
             >
-              {/* <hr className="line" /> */}
+              <hr
+                className="line"
+                style={{
+                  backgroundColor: "rgb(0,200,100)",
+                  height: "1px",
+                  height: "3.4px",
+                  width: "30px",
+                }}
+              />
               <p className={`SU ${isSU ? "bold" : ""}`} onClick={handleClickSU}>
                 SU hier bayes
               </p>
+              <QuestionMark explanation="Erklärung" />
             </div>
 
             <div onClick={handleClickSZ} className="NervNicht">

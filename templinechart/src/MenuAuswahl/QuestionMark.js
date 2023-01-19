@@ -7,13 +7,10 @@ export function QuestionMark({ explanation }) {
     fontSize: "1.5em",
     color: "black",
     cursor: "pointer",
-    position: "absolute",
-    left: "300px",
-    
+
   };
 
   const popupContainerStyle = {
-    position: "absolute",
     zIndex: 1,
     backgroundColor: "white",
     padding: "10px",
