@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { csv } from "d3";
 import "./Graph.css";
-import {useEinwohnerZahlen} from  "./useEinwohnerZahlen";
+// import {getPopulation} from  "./useEinwohner";
 
 const datum = "2023-01-10";
 
@@ -21,9 +21,9 @@ export const useData = (
   let unteresQuantile;
   let oberesQuantile;
 
-  let populationTabelle = useEinwohnerZahlen(menuAge,selectedScope);
+  // let populationTabelle = getPopulation(menuAge,selectedScope);
 
-  console.log(populationTabelle);
+  // console.log(populationTabelle);
   
   // let population = populationTabelle[0].population;
 
@@ -49,9 +49,10 @@ export const useData = (
     const row = (d) => {
   
       if (anzeige === "hunderttausend") {
-        d.value = (+d.mean) * 100000;
-        d.quantileKlein = (+[unteresQuantile]) * 100000;
-        d.quantileGroß = (+d[oberesQuantile]) * 100000;
+
+        d.value = +d.mean
+        d.quantileKlein = +[unteresQuantile]
+        d.quantileGroß = +d[oberesQuantile]
       } else {
         d.value = +d.mean;
         d.quantileKlein = +d[unteresQuantile];
