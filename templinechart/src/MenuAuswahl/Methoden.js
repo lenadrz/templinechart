@@ -41,7 +41,7 @@ export const MethodenDiv = () => {
   
   function handleClick() {
     setIsVisible(!isVisible);
-    setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
+    setLabel(isVisible ? "" : "");
   }
 
   //Function to show and hide the line for the method ----------------------------------------------------------
@@ -345,13 +345,16 @@ export const MethodenDiv = () => {
         {/* Methoden ----------------------------------------------------------- */}
 
         <div className="Methoden">
-          <button className="RoundButton" onClick={handleClick}>
+        <span class="hovertext hovertext-method" data-hover="Informationstext für Methoden">
+          <button className=" btn btn-light button-method-exp" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onClick={handleClick}>
             {isVisible ? (
-              <FiChevronRight className="iconPfeil" />
+              <p><i class="fa-solid fa-caret-right"></i> Methoden ausblenden</p>
             ) : (
-              <FiChevronLeft className="iconPfeil" />
+              <p><i class="fa-solid fa-caret-left"></i> Methoden einblenden</p>
             )}
           </button>
+          </span>
+          
           <label className="methodenEinblenden" onClick={handleClick}>
             {label}
           </label>
