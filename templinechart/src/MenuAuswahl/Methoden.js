@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiChevronLeft } from "react-icons/fi";
 import { FiChevronRight } from "react-icons/fi";
 import { Graph } from "../Graph/Graph";
@@ -6,66 +6,24 @@ import "./DesignMethoden.css";
 import { Dropdown } from "./Dropdown";
 import { color, timeFormat } from "d3";
 import { useData } from "../Graph/useData";
-import { useDataFede } from "../Graph/useData";
 import { QuestionMark } from "./QuestionMark";
-import {Tabelle} from "../Graph/Tabelle";
-
-export default QuestionMark;
-
-const optionsAge = [
-  { value: "00+", label: "00+" },
-  { value: "00-04", label: "00-04" },
-  { value: "05-14", label: "05-14" },
-  { value: "15-34", label: "15-34" },
-  { value: "35-59", label: "35-59" },
-  { value: "60-79", label: "60-79" },
-  { value: "80+", label: "80+" },
-];
-
-const options = [
-  { value: "DE", label: "Deutschland" },
-  { value: "DE-SH", label: "Schleswig-Holstein" },
-  { value: "DE-HH", label: "Hamburg" },
-  { value: "DE-NI", label: "Niedersachsen" },
-  { value: "DE-HB", label: "Bremen" },
-  { value: "DE-NW", label: "Nordrhein-Westfahlen" },
-  { value: "DE-HE", label: "Hessen" },
-  { value: "DE-RP", label: "Rheinland-Pfalz" },
-  { value: "DE-BW", label: "Baden-Württemberg" },
-  { value: "DE-BY", label: "Bayern" },
-  { value: "DE-SL", label: "Saarland" },
-  { value: "DE-BE", label: "Berlin" },
-  { value: "DE-BB", label: "Brandenburg" },
-  { value: "DE-MV", label: "Mecklenburg-Vorpommern" },
-  { value: "DE-SN", label: "Sachsen" },
-  { value: "DE-ST", label: "Sachsen-Anhalt" },
-  { value: "DE-TH", label: "Thüringen" },
-];
-
-const methodenTabelle = [
-  { value: "Epiforecasts-independent", label: "independent Epiforecasts" },
-  { value: "ILM-prop", label: "ILM prop" },
-  { value: "KIT-simple_nowcast", label: "KIT Simple Nowcast" },
-  { value: "LMU_StaBLab-GAM_nowcast", label: "LMU StaBLab-GAM Nowcast" },
-  { value: "NowcastHub-MeanEnsemble", label: "NowcastHub MeanEnsemble" },
-  { value: "RIVM-KEW", label: "RIVM Weekly Report" },
-  { value: "RKI-weekly_report", label: "RKI Weekly Report" },
-  { value: "SU-hier_bayes", label: "SU hier bayes" },
-  { value: "SZ-hosp_nowcast", label: "SZ Nowcast" },
-]
-
-
-const initialValueAge = "00-04";
-const initialValueAnzeige = "absoluteZahlen";
-const initialValue = "Deutschland";
-const initialValueIntervall = "keines";
-
-const initialValueTabelle = "KIT-simple_nowcast";
-
-const dateFormatter = timeFormat("%Y-%m-%d");
-const initialDate = dateFormatter(new Date());
+import { Tabelle } from "../Graph/Tabelle";
+import { useDataFede } from "../Graph/useDataFede";
+import {
+  optionsAge,
+  options,
+  methodenTabelle,
+  initialValueAge,
+  initialValueAnzeige,
+  initialValue,
+  initialValueIntervall,
+  initialValueTabelle,
+  dateFormatter,
+  initialDate,
+} from "./optionsCollection";
 
 export const MethodenDiv = () => {
+  //Const to show and hide the line for the method ----------------------------------------------------------
   const [isDatenstand, setDatenstand] = useState(false);
   const [isEpiforecast, setEpiforecast] = useState(false);
   const [isILM, setILM] = useState(true);
@@ -77,6 +35,16 @@ export const MethodenDiv = () => {
   const [isSU, setSU] = useState(false);
   const [isSZ, setSZ] = useState(false);
 
+  //Hide and Show the selection section for methods ----------------------------------------------------------
+  const [label, setLabel] = useState("Methoden einblenden");
+  const [isVisible, setIsVisible] = useState(false);
+  
+  function handleClick() {
+    setIsVisible(!isVisible);
+    setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
+  }
+
+  //Function to show and hide the line for the method ----------------------------------------------------------
   function handleClickDatenstand() {
     setDatenstand(!isDatenstand);
   }
@@ -108,39 +76,24 @@ export const MethodenDiv = () => {
     setSZ(!isSZ);
   }
 
+  // const for the selection section on the left side of the window ----------------------------------------------------------
+
   const [menuAge, setmenuAge] = useState(initialValueAge);
   const [anzeige, setAnzeige] = useState(initialValueAnzeige);
   const [selectedScope, setScope] = useState(initialValue);
   const [date, setDate] = useState(initialDate);
   const [intervall, setIntervall] = useState(initialValueIntervall);
-  const [isVisible, setIsVisible] = useState(false);
-  const [label, setLabel] = useState("Methoden einblenden");
 
-  const [dataTabelle, setdataTabelle] =useState(initialValueTabelle);
+  //Importing the data for the graph
 
-  function handleClick() {
-    setIsVisible(!isVisible);
-    setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
-  }
-
-  const DataTabelle = useData(
-    dataTabelle,
+  const realData = useDataFede(
+    "ILM-prop",
     menuAge,
     selectedScope,
     intervall,
     anzeige,
     date
   );
-
- 
-    const [isCollapsed, setIsCollapsed] = useState(false);
-  
-    const toggleCollapse = () => {
-      setIsCollapsed(!isCollapsed);
-      console.log(isCollapsed)
-    }
-
-
   const data = useData(
     "ILM-prop",
     menuAge,
@@ -148,7 +101,7 @@ export const MethodenDiv = () => {
     intervall,
     anzeige,
     date
-  ); //muss noch gelöscht werden
+  ); // here we still have to figure out how we set the scope of the axes
   const EPIdata = useData(
     "Epiforecasts-independent",
     menuAge,
@@ -222,8 +175,31 @@ export const MethodenDiv = () => {
     date
   );
 
+  // Tabelle -----------------------------------
+
+  // Section ein und auschalten
+  const [dataTabelleMethode, setdataTabelleMethode] = useState(initialValueTabelle);
+
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+    console.log(isCollapsed);
+  };
+
+  //Data import
 
 
+
+
+
+
+
+
+
+
+
+  //_________________________________
   return (
     <div>
       <div id="menuBand">
@@ -363,6 +339,7 @@ export const MethodenDiv = () => {
           SZdata={SZdata}
           menuAge={menuAge}
           selectedScope={selectedScope}
+          realData={realData}
         />
 
         {/* Methoden ----------------------------------------------------------- */}
@@ -628,26 +605,26 @@ export const MethodenDiv = () => {
         )}
       </div>
 
+
       <section id="tabelle" style={{ position: "absolute", top: "600px" }}>
         <div class="table">
-       <button onClick={toggleCollapse}> Tabelle anzeigen</button>
-          {isCollapsed &&  (   <div class={`collapse ${!isCollapsed ? 'show' : ''}`} id="collapseExample">
-            <div class="card card-body card-table">
-
-            <Dropdown
-                options={methodenTabelle}
-                id="methodenSelectTabelle"
-                dataTabelle={dataTabelle}
-                onSelectedValueChange={setdataTabelle}
-              />
-
-                  <Tabelle
-                    // Data={DataTabelle}
-                  />
-            
+          <button onClick={toggleCollapse}> Tabelle anzeigen</button>
+          {isCollapsed && (
+            <div
+              class={`collapse ${!isCollapsed ? "show" : ""}`}
+              id="collapseExample"
+            >
+              <div class="card card-body card-table">
+                <Dropdown
+                  options={methodenTabelle}
+                  id="methodenSelectTabelle"
+                  dataTabelle={dataTabelleMethode}
+                  onSelectedValueChange={setdataTabelleMethode}
+                />
+                <Tabelle menuAge={menuAge} selectedScope={selectedScope} intervall={intervall} anzeige={anzeige} date={date} dataTabelleMethode={dataTabelleMethode}/>
+              </div>
             </div>
-
-          </div>)}
+          )}
         </div>
       </section>
 
