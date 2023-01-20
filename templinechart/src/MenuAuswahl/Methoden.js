@@ -374,8 +374,8 @@ export const MethodenDiv = () => {
             <hr
                 className="line"
                 style={{
-                  backgroundColor: "transparent",
-                  borderColor: "transparent",
+                  backgroundColor: "blue",
+                  borderColor: "blue",
                   height: "1px",
                   height: "3.4px",
                   width: "30px",
@@ -418,7 +418,8 @@ export const MethodenDiv = () => {
               <hr
                 className="line"
                 style={{
-                  backgroundColor: "rgb(0,200,100)",
+                  backgroundColor: "red",
+                  borderColor: "red",
                   height: "1px",
                   height: "3.4px",
                   width: "30px",
@@ -460,7 +461,8 @@ export const MethodenDiv = () => {
                   <hr
                     className="line"
                     style={{
-                      backgroundColor: "rgb(100,200,100)",
+                      backgroundColor: "rgb(0,0,255)",
+                      borderColor: "rgb(0,0,255)",
                       height: "1px",
                       height: "3.4px",
                       width: "30px",
@@ -500,7 +502,8 @@ export const MethodenDiv = () => {
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(100,0,250)",
+                    borderColor: "rgb(100,0,250)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
@@ -538,7 +541,8 @@ export const MethodenDiv = () => {
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(400,10,200)",
+                    borderColor: "rgb(400,10,200)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
@@ -576,7 +580,8 @@ export const MethodenDiv = () => {
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(100,049,0)",
+                    borderColor: "rgb(100,049,0)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
@@ -615,7 +620,8 @@ export const MethodenDiv = () => {
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(600,100,200)",
+                    borderColor: "rgb(600,100,200)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
@@ -652,7 +658,8 @@ export const MethodenDiv = () => {
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(100,100,100)",
+                    borderColor: "rgb(100,100,100)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
@@ -690,7 +697,8 @@ export const MethodenDiv = () => {
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(010,200,222)",
+                    borderColor: "rgb(010,200,222)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
@@ -728,6 +736,7 @@ export const MethodenDiv = () => {
                   className="line"
                   style={{
                     backgroundColor: "rgb(0,200,100)",
+                    borderColor: "rgb(0,200,100)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
