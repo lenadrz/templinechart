@@ -36,7 +36,7 @@ export const MethodenDiv = () => {
   const [isSZ, setSZ] = useState(false);
 
   //Hide and Show the selection section for methods ----------------------------------------------------------
-  const [label, setLabel] = useState("Methoden einblenden");
+  const [label, setLabel] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   
   function handleClick() {
@@ -203,6 +203,25 @@ export const MethodenDiv = () => {
   return (
     <div>
       <div id="menuBand">
+
+      {/* Methoden Button ----------------------------------------------------------- */}   
+      <div class="Methoden">
+        <span class="hovertext hovertext-method" data-hover="Informationstext für Methoden">
+          <button className=" btn btn-light button-method-exp" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onClick={handleClick}>
+            {isVisible ? (
+              <p><i class="fa-solid fa-caret-right"></i> Methoden ausblenden</p>
+            ) : (
+              <p><i class="fa-solid fa-caret-left"></i> Methoden einblenden</p>
+            )}
+          </button>
+          </span>
+          
+          <label className="methodenEinblenden" onClick={handleClick}>
+            {label}
+          </label>
+          </div>
+          
+
         <div id="datenstand" className="menuOptionen">
           <label className="einführung">Datenstand</label>
           <div id="inhalt">
@@ -342,28 +361,14 @@ export const MethodenDiv = () => {
           realData={realData}
         />
 
-        {/* Methoden ----------------------------------------------------------- */}
-
-        <div className="Methoden">
-        <span class="hovertext hovertext-method" data-hover="Informationstext für Methoden">
-          <button className=" btn btn-light button-method-exp" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onClick={handleClick}>
-            {isVisible ? (
-              <p><i class="fa-solid fa-caret-right"></i> Methoden ausblenden</p>
-            ) : (
-              <p><i class="fa-solid fa-caret-left"></i> Methoden einblenden</p>
-            )}
-          </button>
-          </span>
-          
-          <label className="methodenEinblenden" onClick={handleClick}>
-            {label}
-          </label>
-        </div>
+        {/* Methoden ----------------------------------------------------------- */}    
+        
 
         {isVisible && (
           <table class="methdentabelle">
             <div className="auswahl">
-            
+           
+          {/*1*/}
           <tr>   
             
               <div

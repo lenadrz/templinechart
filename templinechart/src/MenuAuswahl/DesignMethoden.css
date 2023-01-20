@@ -23,10 +23,12 @@
   width: 81%;
 }
 
+
 .Methoden {
   position: relative;
+    right: 300px;
   cursor: pointer;
-  width: 100px;
+  
   justify-content: flex-end;
 }
  
@@ -34,7 +36,7 @@
 
 .methodenEinblenden {
   cursor: pointer;
-  float: right;
+  
 }
 
 
@@ -64,11 +66,12 @@
 }
 
 .hovertext-method:before{
-  width: 200px;
+  width: 50px;
   position: absolute;
+    right: 5px;
+    top: 8px;
   z-index: 1;
-  left: 10px;
-  top: 300%;
+  
 }
 
 .fa-angle-down{
@@ -107,7 +110,7 @@
 
 .auswahl {
   cursor: pointer;
-  width: 400px;
+  
   position: absolute;
    right: 10px;
   
