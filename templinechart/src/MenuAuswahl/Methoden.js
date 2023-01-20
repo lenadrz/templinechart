@@ -176,7 +176,9 @@ export const MethodenDiv = () => {
   );
 
   // Tabelle -----------------------------------
-  const [dataTabelle, setdataTabelle] = useState(initialValueTabelle);
+
+  // Section ein und auschalten
+  const [dataTabelleMethode, setdataTabelleMethode] = useState(initialValueTabelle);
 
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -185,8 +187,10 @@ export const MethodenDiv = () => {
     console.log(isCollapsed);
   };
 
+  //Data import
 
-  
+
+
 
 
 
@@ -600,6 +604,7 @@ export const MethodenDiv = () => {
         )}
       </div>
 
+
       <section id="tabelle" style={{ position: "absolute", top: "600px" }}>
         <div class="table">
           <button onClick={toggleCollapse}> Tabelle anzeigen</button>
@@ -612,16 +617,17 @@ export const MethodenDiv = () => {
                 <Dropdown
                   options={methodenTabelle}
                   id="methodenSelectTabelle"
-                  dataTabelle={dataTabelle}
-                  onSelectedValueChange={setdataTabelle}
+                  dataTabelle={dataTabelleMethode}
+                  onSelectedValueChange={setdataTabelleMethode}
                 />
-
-                {/* <Tabelle Data={dataTABELLE} /> */}
+                <Tabelle menuAge={menuAge} selectedScope={selectedScope} intervall={intervall} anzeige={anzeige} date={date} dataTabelleMethode={dataTabelleMethode}/>
               </div>
             </div>
           )}
         </div>
       </section>
+
+
     </div>
   );
 };

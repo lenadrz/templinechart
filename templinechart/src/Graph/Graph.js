@@ -138,14 +138,8 @@ export const Graph = ({
   const yQuantileGroß = (d) => d.quantileGroß;
   const yAxisLabel = "7 Tage Hospitalisierungsinzidenz";
 
-  // const siFormat = format('.2s');
-  // const xAxisTickFormat = tickValue => siFormat(tickValue).replace('G', 'B');
-
   const xAxisTickFormat = timeFormat("%d.%m.%Y");
 
-  //Für das richtige timeformat siehe: https://gist.github.com/zanarmstrong/ca0adb7e426c12c06a95
-
-  //vll wieder zu scaleLinear ändern
   const xScale = scaleTime()
     .domain([min(data, xValue), max(data, xValue)])
     .range([0, innerWidth])
@@ -155,12 +149,6 @@ export const Graph = ({
     .domain([0, max(data, yValue)])
     .range([innerHeight, 0])
     .nice();
-
-  // .range([innerHeight, 0])
-
-  // anstatt 0 kann man auch :min(data, yValue) nehmen
-
-
 
   return (
     <svg width={width} height={height}>

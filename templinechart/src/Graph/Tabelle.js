@@ -1,53 +1,36 @@
+import { useState, useEffect } from "react";
+import { useData } from "../Graph/useData";
 
+export const Tabelle = ({
+  menuAge,
+  selectedScope,
+  intervall,
+  anzeige,
+  date,
+  dataTabelleMethode,
+}) => {
+  const [dataArray, setDataArray] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-// // export const Tabelle = (dataTabelle) => {
-// //    console.log(dataTabelle);
-// export  function Tabelle (){
-//   // render() {
-//     // if(!this.props.data) return "hi";
-//     return (
-//       // <table>
-//       //   <thead>
-//       //     <tr>
-//       //       <th>Header 1</th>
-//       //       <th>Header 2</th>
-//       //       <th>Header 3</th>
-//       //     </tr>
-//       //   </thead>
-//       //   <tbody>
-//       //     {this.props.data.map((row, index) => (
-//       //       <tr key={index}>
-//       //         <td>{row.location}</td>
-//       //         <td>{row.quantileGroß}</td>
-//       //         <td>{row.quantileKlein}</td>
-//       //       </tr>
-//       //     ))}
-//       //   </tbody>
-//       // </table>
-      
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>Header 1</th>
-//             <th>Header 2</th>
-//             <th>Header 3</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {this.props.data.map((row, index) => (
-//             <tr>
-//               <td>{row.population}</td>
-//               <td>{"2"}</td>
-//               <td>{"3"}</td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     );
-//   }
+  const data = useData(
+    dataTabelleMethode,
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
 
-export const Tabelle = ({ data }) => {
-  if(!data) {return "loading"}
+  useEffect(() => {
+    if (data) {
+      setDataArray(data);
+      setIsLoading(false);
+    }
+  }, [data]);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
   return (
     <table>
       <thead>
@@ -60,35 +43,16 @@ export const Tabelle = ({ data }) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((item, index) => (
+        {dataArray.map((item, index) => (
           <tr key={index}>
             <td>{item.model}</td>
             <td>{item.target_type}</td>
             <td>{item.forecast_date}</td>
             <td>{item.target_end_date}</td>
-            <td>{item.location}</td>
+            <td>{item.value}</td>
           </tr>
         ))}
       </tbody>
     </table>
   );
 };
-
-
-// const App = () => {
-//   const [data, setData] = useState(null);
-//   const [isLoading, setIsLoading] = useState(true);
-
-//   useEffect(() => {
-//     loadData().then(loadedData => {
-//       setData(loadedData);
-//       setIsLoading(false);
-//     });
-//   }, []);
-
-//   return (
-//     <div>
-//       {isLoading ? <p>Loading data...</p> : <Tabelle data={data} />}
-//     </div>
-//   );
-// };
