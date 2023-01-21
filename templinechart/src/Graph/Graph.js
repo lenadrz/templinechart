@@ -41,6 +41,9 @@ export const Graph = ({
   SZdata,
   realData
 }) => {
+
+  console.log(EPIdata);
+  
   let width = 800;
 
   let anzeigeDatenstand;
@@ -146,9 +149,11 @@ export const Graph = ({
     .nice();
 
   const yScale = scaleLinear()
-    .domain([0, max(data, yValue)])
+    .domain([0, max(data, yQuantileGroß)])
     .range([innerHeight, 0])
     .nice();
+
+   
 
   return (
     <svg width={width} height={height}>
@@ -188,9 +193,9 @@ export const Graph = ({
             circleRadius={3}
             anzeigeAnAus={anzeigeEpiforecast}
             farbe={"blue"}
-          />
+          /> 
 
-          <Marks
+       <Marks
             data={EPIdata}
             xScale={xScale}
             yScale={yScale}
@@ -201,9 +206,9 @@ export const Graph = ({
             circleRadius={3}
             anzeigeAnAus={anzeigeEpiforecast}
             farbe={"red"}
-          />
+          /> 
 
-          <Marks
+          {/* <Marks
             data={ILMdata}
             xScale={xScale}
             yScale={yScale}
@@ -214,8 +219,8 @@ export const Graph = ({
             circleRadius={3}
             anzeigeAnAus={anzeigeILM}
             farbe={"0,0,255"}
-          />
-          <Marks
+          /> */}
+<Marks
             data={KITdata}
             xScale={xScale}
             yScale={yScale}
@@ -299,7 +304,7 @@ export const Graph = ({
             circleRadius={3}
             anzeigeAnAus={anzeigeSZ}
             farbe={"0,200,100"}
-          />
+          /> 
         </g>
       </g>
     </svg>

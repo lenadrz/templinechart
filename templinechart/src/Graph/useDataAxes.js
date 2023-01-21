@@ -12,7 +12,7 @@ const datum = "2023-01-10";
 
   const csvUrl = "https://raw.githubusercontent.com/KITmetricslab/hospitalization-nowcast-hub/main/nowcast_viz_de/plot_data/2023-01-20_forecast_data.csv";
 
-export const useData = (
+export const useDataAxes = (
   methode,
   menuAge,
   selectedScope,
@@ -69,7 +69,7 @@ export const useData = (
     csv(csvUrl, row).then((loadedData) => {
       const filteredData = loadedData.filter(
         (d) =>
-          d.model === methode &&
+          d.model !== "" &&
           d.location ===  selectedScope &&
           d.age_group === menuAge
   

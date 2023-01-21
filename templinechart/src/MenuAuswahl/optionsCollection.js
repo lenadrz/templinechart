@@ -42,7 +42,7 @@ export const optionsAge = [
     { value: "SZ-hosp_nowcast", label: "SZ Nowcast" },
   ]
 
-export const initialValueAge = "00-04";
+export const initialValueAge = "00+";
 export const initialValueAnzeige = "absoluteZahlen";
 export const initialValue = "Deutschland";
 

@@ -182,28 +182,3 @@
   
  }
 
- /* Tabelle anzeigen Button*/
- 
- .button-tabelle{
-  
-  margin-left: auto;
-  margin-right: 0;
-  margin-bottom: 15px;
-  width: 10rem;
-  font-size: 0.9rem;
-  position: relative;
-    left: 20px;
-  border-radius: 5px;
-  border: 0px;
-  padding: 12px 6px;
-  text-align: center;
-  
-
-}
-
-.card-table{
-  position: relative;
-    left: 5%;
-  
-}
-
