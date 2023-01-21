@@ -201,5 +201,11 @@
 
 .card-table{
   position: relative;
-    left: 8%;
+    left: 5%;
 }
+
+#methodenSelectTabelle{
+  padding: 8px;
+  
+}
+
