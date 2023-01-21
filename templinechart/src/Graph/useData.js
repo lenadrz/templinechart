@@ -20,6 +20,9 @@ export const useData = (
   anzeige,
   date
 ) => {
+
+  // console.log(methode + " " + menuAge + " " + selectedScope); 
+
   let unteresQuantile;
   let oberesQuantile;
 
