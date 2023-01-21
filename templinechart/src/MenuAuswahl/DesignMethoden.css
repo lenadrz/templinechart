@@ -44,12 +44,15 @@
   display: block;
   margin-left: auto;
   margin-right: 0;
-  width: 10rem;
+  width: 13rem;
   font-size: 0.9rem;
   position: relative;
-   right: -50px;
+   right: -30px;
+  border-radius: 5px;
+  border: 0px;
 
 }
+
 
 .card-body-method{    
   margin-bottom: 10px;
@@ -65,14 +68,7 @@
   right: 15px;
 }
 
-.hovertext-method:before{
-  width: 50px;
-  position: absolute;
-    right: 5px;
-    top: 8px;
-  z-index: 1;
-  
-}
+
 
 .fa-angle-down{
   background-color: white;
@@ -118,6 +114,9 @@
   padding: 2%;
   border-radius: 5px;
   width: 20%;
+  background-color: white;
+  border-radius: 5px;
+  border-color: grey;
   /* background-color: aliceblue; */
   
 }
@@ -183,10 +182,24 @@
   
  }
 
- /* @Lena, hiermit wird die Sichtbarkeit für die Filter Bundelans und Age gesetzt, visible und hidden sind falsch bennant. Wenn visible ist es eigentlich hidden....  */
- .hidden {
 
+ /* Tabelle */
+
+.button-table{
+  margin-left: auto;
+  margin-right: 0;
+  width: 10rem;
+  font-size: 0.9rem;
+  position: relative;
+   left: 15px;
+  border-radius: 5px;
+  border: 0px;
+  margin: 8px;
+  padding: 12px 6px;
 }
-.visible {
-  opacity: 0.3; 
+
+
+.card-table{
+  position: relative;
+    left: 8%;
 }

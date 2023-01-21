@@ -214,37 +214,24 @@ export const MethodenDiv = () => {
   return (
     <div>
       <div id="menuBand">
-        {/* Methoden Button ----------------------------------------------------------- */}
-        <div class="Methoden">
-          <span
-            class="hovertext hovertext-method"
-            data-hover="Informationstext für Methoden"
-          >
-            <button
-              className=" btn btn-light button-method-exp"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseWidthExample"
-              aria-expanded="false"
-              aria-controls="collapseWidthExample"
-              onClick={handleClick}
-            >
-              {isVisible ? (
-                <p>
-                  <i class="fa-solid fa-caret-right"></i> Methoden ausblenden
-                </p>
-              ) : (
-                <p>
-                  <i class="fa-solid fa-caret-left"></i> Methoden einblenden
-                </p>
-              )}
-            </button>
-          </span>
 
+      {/* Methoden Button ----------------------------------------------------------- */}   
+      <div class="Methoden">
+        
+          <button className=" btn btn-light button-method-exp" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onClick={handleClick}>
+            {isVisible ? (
+              <p><i class="fa-solid fa-caret-right"></i> Methoden ausblenden</p>
+            ) : (
+              <p><i class="fa-solid fa-caret-left"></i> Methoden einblenden</p>
+            )}
+          </button>
+          
+          
           <label className="methodenEinblenden" onClick={handleClick}>
             {label}
           </label>
-        </div>
+          </div>
+          
 
         <div id="datenstand" className="menuOptionen">
           <label className="einführung">Datenstand</label>
@@ -780,8 +767,8 @@ export const MethodenDiv = () => {
       </div>
 
       <section id="tabelle" style={{ position: "absolute", top: "600px" }}>
-        <div className="table">
-          <button onClick={toggleCollapse}> Tabelle anzeigen</button>
+        <div class="table">
+          <button class="btn btn-light button-table rounded" onClick={toggleCollapse}> <i class="fa-solid fa-caret-down"></i> Tabelle anzeigen</button>
           {isCollapsed && (
             <div
               className={`collapse ${!isCollapsed ? "show" : ""}`}
