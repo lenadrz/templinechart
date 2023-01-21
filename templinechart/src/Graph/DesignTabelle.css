@@ -3,6 +3,8 @@
 
 .Tabelle_header{
     width: 20%;
+    border: 1px solid;
+
 }
 
 .tabelle_hd{
@@ -10,6 +12,7 @@
     text-align: center;
     height: 50px;
     width: 150px;
+    font-size: 1rem;
     
     
 }
