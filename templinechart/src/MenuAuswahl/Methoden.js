@@ -21,6 +21,7 @@ import {
   dateFormatter,
   initialDate,
 } from "./optionsCollection";
+import {useDataAxes} from "../Graph/useDataAxes"
 
 export const MethodenDiv = () => {
   //Const to show and hide the line for the method ----------------------------------------------------------
@@ -43,6 +44,7 @@ export const MethodenDiv = () => {
     setIsVisible(!isVisible);
     setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
   }
+
 
   //Function to show and hide the line for the method ----------------------------------------------------------
   function handleClickDatenstand() {
@@ -94,8 +96,8 @@ export const MethodenDiv = () => {
     anzeige,
     date
   );
-  const data = useData(
-    "ILM-prop",
+
+  const data = useDataAxes(
     menuAge,
     selectedScope,
     intervall,
@@ -110,14 +112,14 @@ export const MethodenDiv = () => {
     anzeige,
     date
   );
-  const ILMdata = useData(
-    "ILM-prop",
-    menuAge,
-    selectedScope,
-    intervall,
-    anzeige,
-    date
-  );
+  // const ILMdata = useData(
+  //   "ILM-prop",
+  //   menuAge,
+  //   selectedScope,
+  //   intervall,
+  //   anzeige,
+  //   date
+  // );
   const KITdata = useData(
     "KIT-simple_nowcast",
     menuAge,
@@ -175,9 +177,8 @@ export const MethodenDiv = () => {
     date
   );
 
-  // Tabelle -----------------------------------
+  // Tabelle mit Button eine und ausblende -----------------------------------
 
-  // Section ein und auschalten
   const [dataTabelleMethode, setdataTabelleMethode] = useState(initialValueTabelle);
 
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -187,19 +188,6 @@ export const MethodenDiv = () => {
     console.log(isCollapsed);
   };
 
-  //Data import
-
-
-
-
-
-
-
-
-
-
-
-  //_________________________________
   return (
     <div>
       <div id="menuBand">
@@ -223,7 +211,7 @@ export const MethodenDiv = () => {
       </div>
       <div>
         <div id="filter" className="menuOptionen">
-          <t className="einführung">Filter</t>
+          <label className="einführung">Filter</label>
           <div id="inhalt">
             <div>
               <label for="scope-select">Bundesland:</label>
@@ -257,7 +245,7 @@ export const MethodenDiv = () => {
         </div>
 
         <div id="anzeige" className="menuOptionen">
-          <t className="einführung">Anzeige</t>
+          <label className="einführung">Anzeige</label>
           <div id="inhalt">
             <div style={{ display: "flex", flexWrap: "wrap" }}>
               <label>Pro 100.000: </label>
@@ -281,7 +269,7 @@ export const MethodenDiv = () => {
         </div>
 
         <div id="unsicherheitsintervall" className="menuOptionen">
-          <t className="einführung">Unsicherheitsintervall</t>
+          <label className="einführung">Unsicherheitsintervall</label>
           <div id="inhalt">
             <div>
               95 % :{" "}
@@ -290,7 +278,6 @@ export const MethodenDiv = () => {
                 name="unsicherheitsintervall"
                 value="FÜNFundNEUNZIG"
                 onChange={(e) => setIntervall(e.target.value)}
-                defaultChecked
               />
               50 % :{" "}
               <input
@@ -329,7 +316,7 @@ export const MethodenDiv = () => {
           isSZ={isSZ}
           data={data}
           EPIdata={EPIdata}
-          ILMdata={ILMdata}
+          // ILMdata={ILMdata}
           KITdata={KITdata}
           LMUdata={LMUdata}
           Nowcastdata={Nowcastdata}
@@ -377,7 +364,7 @@ export const MethodenDiv = () => {
                   className={`container ${isEpiforecast ? "moved" : ""}`}
                   onClick={handleClickEpi}
                 >
-                  <td class="linelayout">
+                  <td className ="linelayout">
                     <hr
                       className="line"
                       style={{
@@ -401,10 +388,10 @@ export const MethodenDiv = () => {
                   </td>
                   <td>
                     <div
-                      class="hovertext questionmark"
+                      className="hovertext questionmark"
                       data-hover="hover text 1"
                     >
-                      <div class="">
+                      <div className="">
                         <p> ?</p>
                       </div>
                     </div>
@@ -606,14 +593,14 @@ export const MethodenDiv = () => {
 
 
       <section id="tabelle" style={{ position: "absolute", top: "600px" }}>
-        <div class="table">
+        <div className="table">
           <button onClick={toggleCollapse}> Tabelle anzeigen</button>
           {isCollapsed && (
             <div
-              class={`collapse ${!isCollapsed ? "show" : ""}`}
+              className={`collapse ${!isCollapsed ? "show" : ""}`}
               id="collapseExample"
             >
-              <div class="card card-body card-table">
+              <div className="card card-body card-table">
                 <Dropdown
                   options={methodenTabelle}
                   id="methodenSelectTabelle"

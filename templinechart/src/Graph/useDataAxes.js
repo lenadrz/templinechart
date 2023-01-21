@@ -5,15 +5,9 @@ import { getPopulation, Population } from "./Population"
 
 const datum = "2023-01-10";
 
-// const csvUrl =
-//   "https://raw.githubusercontent.com/KITmetricslab/hospitalization-nowcast-hub/main/nowcast_viz_de/plot_data/" +
-//   datum +
-//   "_forecast_data.csv";
-
   const csvUrl = "https://raw.githubusercontent.com/KITmetricslab/hospitalization-nowcast-hub/main/nowcast_viz_de/plot_data/2023-01-20_forecast_data.csv";
 
-export const useData = (
-  methode,
+export const useDataAxes = (
   menuAge,
   selectedScope,
   intervall,
@@ -22,17 +16,6 @@ export const useData = (
 ) => {
   let unteresQuantile;
   let oberesQuantile;
-
-  // let populationTabelle = getPopulation(menuAge,selectedScope);
-
-  // console.log(populationTabelle);
-  
-  // let population = populationTabelle[0].population;
-
-
-  // d.value = (+d.mean/+population) * 100000;
-  // d.quantileKlein = (+[unteresQuantile]/population) * 100000;
-  // d.quantileGroß = (+d[oberesQuantile]/population) * 100000;
 
   const [data, setData] = useState(null);
 
@@ -67,14 +50,13 @@ export const useData = (
     csv(csvUrl, row).then((loadedData) => {
       const filteredData = loadedData.filter(
         (d) =>
-          d.model === methode &&
           d.location ===  "DE" &&
           d.age_group === "00+"
   
       );
       setData(filteredData);
     });
-  }, [methode, menuAge, selectedScope, intervall, anzeige]);
+  }, [menuAge, selectedScope, intervall, anzeige]);
 
   return data;
 };

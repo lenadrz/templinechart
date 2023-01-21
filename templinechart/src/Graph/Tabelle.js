@@ -35,21 +35,22 @@ export const Tabelle = ({
     <table>
       <thead>
         <tr>
-          <th>Model</th>
-          <th>Target Type</th>
-          <th>Forecast Date</th>
-          <th>Target End Date</th>
+          <th>***</th>
+          <th>Aktuellster Datenstand</th>
+          <th>Untere Grenze Unsicherheitsintervall</th>
+          <th>Nowcast</th>
+          <th>Obere Grenze Unsicherheitsintervall</th>
           <th>Location</th>
         </tr>
       </thead>
       <tbody>
         {dataArray.map((item, index) => (
           <tr key={index}>
-            <td>{item.model}</td>
-            <td>{item.target_type}</td>
-            <td>{item.forecast_date}</td>
-            <td>{item.target_end_date}</td>
+            <td>{"***"}</td>
+            <td>{"***"}</td>
+            <td>{item.quantileKlein}</td>
             <td>{item.value}</td>
+            <td>{item.quantileGroß}</td>
           </tr>
         ))}
       </tbody>
