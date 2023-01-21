@@ -37,12 +37,12 @@ export const MethodenDiv = () => {
   const [isSZ, setSZ] = useState(false);
 
   //Hide and Show the selection section for methods ----------------------------------------------------------
-  const [label, setLabel] = useState("Methoden einblenden");
+  const [label, setLabel] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   
   function handleClick() {
     setIsVisible(!isVisible);
-    setLabel(isVisible ? "Methoden einblenden" : "Methoden ausblenden");
+    setLabel(isVisible ? "" : "");
   }
 
 
@@ -191,6 +191,25 @@ export const MethodenDiv = () => {
   return (
     <div>
       <div id="menuBand">
+
+      {/* Methoden Button ----------------------------------------------------------- */}   
+      <div class="Methoden">
+        <span class="hovertext hovertext-method" data-hover="Informationstext für Methoden">
+          <button className=" btn btn-light button-method-exp" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onClick={handleClick}>
+            {isVisible ? (
+              <p><i class="fa-solid fa-caret-right"></i> Methoden ausblenden</p>
+            ) : (
+              <p><i class="fa-solid fa-caret-left"></i> Methoden einblenden</p>
+            )}
+          </button>
+          </span>
+          
+          <label className="methodenEinblenden" onClick={handleClick}>
+            {label}
+          </label>
+          </div>
+          
+
         <div id="datenstand" className="menuOptionen">
           <label className="einführung">Datenstand</label>
           <div id="inhalt">
@@ -329,34 +348,52 @@ export const MethodenDiv = () => {
           realData={realData}
         />
 
-        {/* Methoden ----------------------------------------------------------- */}
-
-        <div className="Methoden">
-          <button className="RoundButton" onClick={handleClick}>
-            {isVisible ? (
-              <FiChevronRight className="iconPfeil" />
-            ) : (
-              <FiChevronLeft className="iconPfeil" />
-            )}
-          </button>
-          <label className="methodenEinblenden" onClick={handleClick}>
-            {label}
-          </label>
-        </div>
+        {/* Methoden ----------------------------------------------------------- */}    
+        
 
         {isVisible && (
-          <table>
+          <table class="methdentabelle">
             <div className="auswahl">
+           
+          {/*1*/}
+          <tr>   
+            
               <div
                 className={`container ${isDatenstand ? "moved" : ""}`}
                 onClick={handleClickDatenstand}
               >
+            <td class ="linelayout">
+            <hr
+                className="line"
+                style={{
+                  backgroundColor: "blue",
+                  borderColor: "blue",
+                  height: "1px",
+                  height: "3.4px",
+                  width: "30px",
+                }}
+              />
+            </td>
+            <td class="methodnamerow">
                 <p
                   className={`datenstand ${isDatenstand ? "bold" : ""}`}
                   onClick={handleClickDatenstand}
                 >
                   Datenstand
                 </p>
+                </td>
+              <td>
+              <td>
+                    <div
+                      class="hovertext questionmark hoverq"
+                      data-hover="hover text 1"
+                    >
+                      <div class="">
+                        <p> ?</p>
+                      </div>
+                    </div>
+                  </td>
+              </td>
               </div>
 
               <tr>
@@ -364,7 +401,7 @@ export const MethodenDiv = () => {
                   className={`container ${isEpiforecast ? "moved" : ""}`}
                   onClick={handleClickEpi}
                 >
-                  <td className ="linelayout">
+                  <td class="linelayout">
                     <hr
                       className="line"
                       style={{
@@ -376,9 +413,9 @@ export const MethodenDiv = () => {
                     />
                   </td>
 
-                  {/* karina*/}
+                  
 
-                  <td>
+                  <td class="methodnamerow">
                     <p
                       className={`Epiforecast ${isEpiforecast ? "bold" : ""}`}
                       onClick={handleClickEpi}
@@ -388,7 +425,7 @@ export const MethodenDiv = () => {
                   </td>
                   <td>
                     <div
-                      className="hovertext questionmark"
+                      class="hovertext questionmark"
                       data-hover="hover text 1"
                     >
                       <div className="">
@@ -398,194 +435,323 @@ export const MethodenDiv = () => {
                   </td>
                 </div>
               </tr>
-              {/* karina*/}
+              
+              {/*3*/}
+          <tr>
 
               <div
                 className={`container ${isILM ? "moved" : ""}`}
                 onClick={handleClickILM}
               >
-                <hr
-                  className="line"
-                  style={{
-                    backgroundColor: "rgb(0,200,100)",
-                    height: "1px",
-                    height: "3.4px",
-                    width: "30px",
-                  }}
-                />
+                <td class="linelayout">
+                  <hr
+                    className="line"
+                    style={{
+                      backgroundColor: "rgb(0,0,255)",
+                      borderColor: "rgb(0,0,255)",
+                      height: "1px",
+                      height: "3.4px",
+                      width: "30px",
+                    }}
+                  />
+                </td>
+
+                <td class="methodnamerow">
                 <p
                   className={`ILM ${isILM ? "bold" : ""}`}
                   onClick={handleClickILM}
                 >
                   ILM prop
                 </p>
-                <QuestionMark explanation="Erklärung" />
-              </div>
+                </td>
+                    <td>
+                    <div
+                      class="hovertext questionmark hoverq"
+                      data-hover="hover text 3"
+                    >
+                      <div class="">
+                        <p> ?</p>
+                      </div>
+                    </div>
+                  </td>
 
+              </div>
+          </tr>    
+
+            {/*4*/}
+            <tr >
               <div
                 className={`container ${isKIT ? "moved" : ""}`}
                 onClick={handleClickKIT}
               >
+              <td class="linelayout">
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(100,0,250)",
+                    borderColor: "rgb(100,0,250)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
                   }}
                 />
+                </td>
+                <td class="methodnamerow">
                 <p
                   className={`KIT ${isKIT ? "bold" : ""}`}
                   onClick={handleClickKIT}
                 >
                   KIT Simple Nowcast
                 </p>
-                <QuestionMark explanation="Erklärung" />
+                </td>
+                <td>
+                <div
+                      class="hovertext questionmark hoverq"
+                      data-hover="hover text 4"
+                    >
+                      <div class="">
+                        <p> ?</p>
+                      </div>
+                    </div>
+                </td>
               </div>
+              </tr>
 
+              {/*5*/}
+              <tr>
               <div
                 className={`container ${isLMU ? "moved" : ""}`}
                 onClick={handleClickLMU}
               >
+              <td class="linelayout">
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(400,10,200)",
+                    borderColor: "rgb(400,10,200)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
                   }}
                 />
+                </td>
+                <td class="methodnamerow">
                 <p
                   className={`LMU ${isLMU ? "bold" : ""}`}
                   onClick={handleClickLMU}
                 >
                   LMU StaBlab-GAM Nowcast
                 </p>
-                <QuestionMark explanation="Erklärung" />
+                </td>
+                <td>
+                <div
+                      class="hovertext questionmark hoverq"
+                      data-hover="hover text 5"
+                    >
+                      <div class="">
+                        <p> ?</p>
+                      </div>
+                    </div>
+                </td>
               </div>
+              </tr>
 
+                {/*6*/}
+              <tr>
               <div
                 className={`container ${isNowcast ? "moved" : ""}`}
                 onClick={handleClickNowcast}
               >
+              <td class="linelayout">
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(100,049,0)",
+                    borderColor: "rgb(100,049,0)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
                   }}
                 />
+                </td>
+                <td class="methodnamerow">
                 <p
                   className={`Nowcast ${isNowcast ? "bold" : ""}`}
                   onClick={handleClickNowcast}
                 >
                   NowcastHub MeanEnsemble
                 </p>
-                <QuestionMark explanation="Erklärung" />
+                </td>
+                <td>
+                <div 
+                      class="hovertext questionmark hoverq"
+                      data-hover="hover text 6"
+                    >
+                      <div class="">
+                        <p> ?</p>
+                      </div>
+                    </div>
+                </td>
               </div>
-
+              
+              </tr>
+              {/*7*/}
+              <tr>
+              
               <div
                 className={`container ${isRIVM ? "moved" : ""}`}
                 onClick={handleClickRIVM}
               >
+              <td class="linelayout">
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(600,100,200)",
+                    borderColor: "rgb(600,100,200)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
                   }}
                 />
+                </td>
+                <td class="methodnamerow">
                 <p
                   className={`RIVM ${isRIVM ? "bold" : ""}`}
                   onClick={handleClickRIVM}
                 >
                   RIVM Weekly Report
                 </p>
-                <QuestionMark explanation="Erklärung" />
+                </td>
+                <td>
+                <div
+                      class="hovertext questionmark hoverq"
+                      data-hover="hover text 7"
+                    >
+                      <div class="">
+                        <p> ?</p>
+                      </div>
+                    </div>
+                </td>
               </div>
-
+              </tr>
+              {/*8*/}
+              <tr>
               <div
                 className={`container ${isRKI ? "moved" : ""}`}
                 onClick={handleClickRKI}
               >
+              <td class="linelayout">
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(100,100,100)",
+                    borderColor: "rgb(100,100,100)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
                   }}
                 />
+                </td>
+                <td class="methodnamerow">
                 <p
                   className={`RKI ${isRKI ? "bold" : ""}`}
                   onClick={handleClickRKI}
                 >
                   RKI Weekly Report
                 </p>
-                <QuestionMark explanation="Erklärung" />
+                </td>
+                <td>
+                <div
+                      class="hovertext questionmark hoverq"
+                      data-hover="hover text 8"
+                    >
+                      <div class="">
+                        <p> ?</p>
+                      </div>
+                    </div>
+                </td>
               </div>
+              </tr>
 
+              {/*9*/}
+              <tr>
               <div
                 className={`container ${isSU ? "moved" : ""}`}
                 onClick={handleClickSU}
               >
+              <td class="linelayout">
                 <hr
                   className="line"
                   style={{
-                    backgroundColor: "rgb(0,200,100)",
+                    backgroundColor: "rgb(010,200,222)",
+                    borderColor: "rgb(010,200,222)",
                     height: "1px",
                     height: "3.4px",
                     width: "30px",
                   }}
                 />
+                </td>
+                <td class="methodnamerow">
                 <p
                   className={`SU ${isSU ? "bold" : ""}`}
                   onClick={handleClickSU}
                 >
                   SU hier bayes
                 </p>
-                <QuestionMark explanation="Erklärung" />
+                </td>
+                <td>
+                <div
+                      class="hovertext questionmark hoverq " data-hover="hover text 9">
+                      <div class="">
+                        <p> ?</p>
+                      </div>
+                    </div>
+                </td>
               </div>
-
-              <div onClick={handleClickSZ} className="NervNicht">
-                <p
-                  className={`SZ container ${isSZ ? "bold moved" : ""}`}
+              </tr>
+              {/*10*/}
+              <tr>
+                <div
+                  className={`container ${isSZ ? "moved" : ""}`}
                   onClick={handleClickSZ}
-                  style={{
-                    lineHeight: "1px",
-                    position: "absolute",
-                    right: "170px",
-                    top: "23px",
-                  }}
                 >
-                  SZ Nowcast
-                </p>
-                <hr
+
+              
+              <td class="linelayout">
+              <hr
                   className="line"
                   style={{
                     backgroundColor: "rgb(0,200,100)",
+                    borderColor: "rgb(0,200,100)",
                     height: "1px",
-                    // verticalAlign: "middle",
-                    position: "absolute",
-                    left: "250px",
-                    top: "28.9px",
                     height: "3.4px",
                     width: "30px",
                   }}
                 />
 
-                <QuestionMark
-                  explanation="Erklärung"
-                  style={{ position: "absolute", left: "1100px" }}
-                />
+              </td>
+              <td class="methodnamerow">
+                <p
+                  className={`SZ container ${isSZ ? "bold" : ""}`}
+                  onClick={handleClickSZ}
+                >
+                  SZ Nowcast
+                </p>
+                
+                </td>
+                <td>
+                <div
+                      class="hovertext questionmark hoverq"
+                      data-hover="hover text 10"
+                    >
+                      <div class="">
+                        <p> ?</p>
+                      </div>
+                    </div>
+                </td>
               </div>
+              
+              </tr>
             </div>
           </table>
         )}
