@@ -183,3 +183,10 @@
   
  }
 
+ /* @Lena, hiermit wird die Sichtbarkeit für die Filter Bundelans und Age gesetzt, visible und hidden sind falsch bennant. Wenn visible ist es eigentlich hidden....  */
+ .hidden {
+
+}
+.visible {
+  opacity: 0.3; 
+}
