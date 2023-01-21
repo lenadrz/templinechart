@@ -206,21 +206,21 @@ export const MethodenDiv = () => {
 
       {/* Methoden Button ----------------------------------------------------------- */}   
       <div class="Methoden">
-        <span class="hovertext hovertext-method" data-hover="Informationstext für Methoden">
-          <button className=" btn btn-light button-method-exp" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onClick={handleClick}>
+        
+          <button className=" btn btn-light button-method-exp rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" onClick={handleClick}>
             {isVisible ? (
               <p><i class="fa-solid fa-caret-right"></i> Methoden ausblenden</p>
             ) : (
               <p><i class="fa-solid fa-caret-left"></i> Methoden einblenden</p>
             )}
           </button>
-          </span>
+          
           
           <label className="methodenEinblenden" onClick={handleClick}>
             {label}
           </label>
           </div>
-          
+
 
         <div id="datenstand" className="menuOptionen">
           <label className="einführung">Datenstand</label>
@@ -779,7 +779,7 @@ export const MethodenDiv = () => {
 
       <section id="tabelle" style={{ position: "absolute", top: "600px" }}>
         <div class="table">
-          <button onClick={toggleCollapse}> Tabelle anzeigen</button>
+          <button class="btn btn-light rounded button-tabelle" onClick={toggleCollapse} > <i class="fa-solid fa-caret-down"></i> Tabelle anzeigen</button>
           {isCollapsed && (
             <div
               class={`collapse ${!isCollapsed ? "show" : ""}`}
