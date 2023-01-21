@@ -23,6 +23,8 @@ export const useData = (
   let unteresQuantile;
   let oberesQuantile;
 
+console.log(selectedScope + " " + menuAge);
+
   // let populationTabelle = getPopulation(menuAge,selectedScope);
 
   // console.log(populationTabelle);
@@ -68,8 +70,8 @@ export const useData = (
       const filteredData = loadedData.filter(
         (d) =>
           d.model === methode &&
-          d.location ===  "DE" &&
-          d.age_group === "00+"
+          d.location ===  selectedScope &&
+          d.age_group === menuAge
   
       );
       setData(filteredData);
