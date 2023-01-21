@@ -8,7 +8,6 @@ import { color, timeFormat } from "d3";
 import { useData } from "../Graph/useData";
 import { QuestionMark } from "./QuestionMark";
 import { Tabelle } from "../Graph/Tabelle";
-import { useDataFede } from "../Graph/useDataFede";
 import {
   optionsAge,
   options,
@@ -118,14 +117,6 @@ export const MethodenDiv = () => {
 
   //Importing the data for the graph
 
-  const realData = useDataFede(
-    "ILM-prop",
-    menuAge,
-    selectedScope,
-    intervall,
-    anzeige,
-    date
-  );
 
  
   const EPIdata = useData(
@@ -153,7 +144,6 @@ export const MethodenDiv = () => {
     date
   );
 
-  console.log(KITdata);
   const LMUdata = useData(
     "LMU_StaBLab-GAM_nowcast",
     menuAge,
@@ -389,7 +379,6 @@ export const MethodenDiv = () => {
           SZdata={SZdata}
           menuAge={menuAge}
           selectedScope={selectedScope}
-          realData={realData}
         />
 
         {/* Methoden ----------------------------------------------------------- */}

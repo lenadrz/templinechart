@@ -35,22 +35,27 @@ export const Tabelle = ({
     <table>
       <thead>
         <tr>
-          <th>***</th>
+          <th>Bundesland</th>
           <th>Aktuellster Datenstand</th>
+          <th>Datenstand am Tag des Nowcast</th>
           <th>Untere Grenze Unsicherheitsintervall</th>
           <th>Nowcast</th>
           <th>Obere Grenze Unsicherheitsintervall</th>
-          <th>Location</th>
+          <th>Korrekturfaktor</th>
+          <th>Prozentuale Veränderung zur Vorwoche</th>
         </tr>
       </thead>
       <tbody>
         {dataArray.map((item, index) => (
           <tr key={index}>
-            <td>{"***"}</td>
-            <td>{"***"}</td>
+            <td>{"Deutschland"}</td>
+            <td>{"****"}</td>
+            <td>{"****"}</td>
             <td>{item.quantileKlein}</td>
             <td>{item.value}</td>
             <td>{item.quantileGroß}</td>
+            <td>{"****"}</td>
+            <td>{"****"}</td>
           </tr>
         ))}
       </tbody>

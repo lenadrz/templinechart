@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { scaleLinear, scaleTime, timeFormat, min, max, tickStep } from "d3";
-import { useData } from "./useData";
 import { AxisBottom } from "./AxisBottom";
 import { AxisLeft } from "./AxisLeft";
 import { Marks } from "./Marks";
 import "./Graph.css";
 import { line, curveNatural } from "d3";
-import { MarksFede } from "./MarksFede"
+
 
 
 
@@ -42,7 +41,6 @@ export const Graph = ({
   realData
 }) => {
 
-  console.log(EPIdata);
   
   let width = 800;
 
@@ -184,16 +182,7 @@ export const Graph = ({
         </text>
         <g className="mark">
 
-        <MarksFede
-            data={realData}
-            xScale={xScale}
-            yScale={yScale}
-            xValue={xValue}
-            yValue={yValue}
-            circleRadius={3}
-            anzeigeAnAus={anzeigeEpiforecast}
-            farbe={"blue"}
-          /> 
+
 
        <Marks
             data={EPIdata}
