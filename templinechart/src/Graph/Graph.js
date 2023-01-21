@@ -41,6 +41,9 @@ export const Graph = ({
   SZdata,
   realData
 }) => {
+
+  console.log(EPIdata);
+  
   let width = 800;
 
   let anzeigeDatenstand;
@@ -149,6 +152,8 @@ export const Graph = ({
     .domain([0, max(data, yQuantileGroß)])
     .range([innerHeight, 0])
     .nice();
+
+   
 
   return (
     <svg width={width} height={height}>

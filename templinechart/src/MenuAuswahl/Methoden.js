@@ -24,11 +24,41 @@ import {
 import { useDataAxes } from "../Graph/useDataAxes";
 
 export const MethodenDiv = () => {
+    // Tabelle mit Button eine und ausblende -----------------------------------
+
+    const [dataTabelleMethode, setdataTabelleMethode] =
+    useState(initialValueTabelle);
+
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
+  //Filter: If one is selected, the other one´s opacity is set down
+  const div1 = document.getElementById("div1");
+  const div2 = document.getElementById("div2");
+
+  function handleDiv1Selection() {
+    div1.classList.remove("visible");
+    div1.classList.add("hidden");
+    div2.classList.remove("hidden");
+    div2.classList.add("visible");
+  }
+
+  function handleDiv2Selection() {
+    div2.classList.remove("visible");
+    div2.classList.add("hidden");
+    div1.classList.remove("hidden");
+    div1.classList.add("visible");
+  }
+
+
   //Const to show and hide the line for the method ----------------------------------------------------------
   const [isDatenstand, setDatenstand] = useState(false);
   const [isEpiforecast, setEpiforecast] = useState(false);
-  const [isILM, setILM] = useState(true);
-  const [isKIT, setKIT] = useState(false);
+  const [isILM, setILM] = useState(false);
+  const [isKIT, setKIT] = useState(true);
   const [isLMU, setLMU] = useState(false);
   const [isNowcast, setNowcast] = useState(false);
   const [isRIVM, setRIVM] = useState(false);
@@ -96,14 +126,7 @@ export const MethodenDiv = () => {
     date
   );
 
-  const data = useDataAxes(
-    // "KIT-simple_nowcast",
-    menuAge,
-    selectedScope,
-    intervall,
-    anzeige,
-    date
-  );
+ 
   const EPIdata = useData(
     "Epiforecasts-independent",
     menuAge,
@@ -128,6 +151,8 @@ export const MethodenDiv = () => {
     anzeige,
     date
   );
+
+  console.log(KITdata);
   const LMUdata = useData(
     "LMU_StaBLab-GAM_nowcast",
     menuAge,
@@ -177,35 +202,14 @@ export const MethodenDiv = () => {
     date
   );
 
-  // Tabelle mit Button eine und ausblende -----------------------------------
-
-  const [dataTabelleMethode, setdataTabelleMethode] =
-    useState(initialValueTabelle);
-
-  const [isCollapsed, setIsCollapsed] = useState(false);
-
-  const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
-    console.log(isCollapsed);
-  };
-
-  //Filter: If one is selected, the other one´s opacity is set down
-  const div1 = document.getElementById("div1");
-  const div2 = document.getElementById("div2");
-
-  function handleDiv1Selection() {
-    div1.classList.remove("visible");
-    div1.classList.add("hidden");
-    div2.classList.remove("hidden");
-    div2.classList.add("visible");
-  }
-
-  function handleDiv2Selection() {
-    div2.classList.remove("visible");
-    div2.classList.add("hidden");
-    div1.classList.remove("hidden");
-    div1.classList.add("visible");
-  }
+  const data = useDataAxes(
+    "KIT-simple_nowcast",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
 
   return (
     <div>
@@ -275,14 +279,13 @@ export const MethodenDiv = () => {
                   setScope(selectedScope);
                   handleDiv1Selection();
                 }}
-              />
+              /> 
             </div>
             <div id="div2" class="hidden">
               <label for="scope-select">Alter:</label>
               <Dropdown
                 options={optionsAge}
                 id="age-select"
-                selectedValue
                 selectedValue={menuAge}
                 onSelectedValueChange={(selectedValue) => {
                   setmenuAge(selectedValue);
