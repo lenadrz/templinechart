@@ -22,6 +22,7 @@ import {
   initialDate,
 } from "./optionsCollection";
 import { useDataAxes } from "../Graph/useDataAxes";
+import { useDataDatenstand} from "../Graph/useDataBjörn"
 
 export const MethodenDiv = () => {
     // Tabelle mit Button eine und ausblende -----------------------------------
@@ -203,6 +204,15 @@ export const MethodenDiv = () => {
   );
 
   const data = useDataAxes(
+    "KIT-simple_nowcast",
+    menuAge,
+    selectedScope,
+    intervall,
+    anzeige,
+    date
+  );
+
+  const datenstand_schwarz = useDataDatenstand(
     "KIT-simple_nowcast",
     menuAge,
     selectedScope,
