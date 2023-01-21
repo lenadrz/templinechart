@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useData } from "../Graph/useData";
+import "./DesignTabelle.css";
 
 export const Tabelle = ({
   menuAge,
@@ -33,16 +34,16 @@ export const Tabelle = ({
   }
   return (
     <table>
-      <thead>
-        <tr>
-          <th>Bundesland</th>
-          <th>Aktuellster Datenstand</th>
-          <th>Datenstand am Tag des Nowcast</th>
-          <th>Untere Grenze Unsicherheitsintervall</th>
-          <th>Nowcast</th>
-          <th>Obere Grenze Unsicherheitsintervall</th>
-          <th>Korrekturfaktor</th>
-          <th>Prozentuale Veränderung zur Vorwoche</th>
+      <thead >
+        <tr class="Tabelle_header" >
+          <th class="tabelle_hd">Bundesland</th>
+          <th class="tabelle_hd">Aktuellster Datenstand</th>
+          <th class="tabelle_hd">Datenstand am Tag des Nowcast</th>
+          <th class="tabelle_hd">Untere Grenze Unsicherheitsintervall</th>
+          <th class="tabelle_hd">Nowcast</th>
+          <th class="tabelle_hd">Obere Grenze Unsicherheitsintervall</th>
+          <th class="tabelle_hd">Korrekturfaktor</th>
+          <th class="tabelle_hd">Prozentuale Veränderung zur Vorwoche</th>
         </tr>
       </thead>
       <tbody>
