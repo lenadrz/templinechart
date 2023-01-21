@@ -195,9 +195,13 @@
   border-radius: 5px;
   border: 0px;
   margin: 8px;
+  margin-bottom: 20px;
   padding: 12px 6px;
 }
 
+.table{
+  margin-top: 30px;
+}
 
 .card-table{
   position: relative;
@@ -206,6 +210,7 @@
 
 #methodenSelectTabelle{
   padding: 8px;
+  margin-bottom: 2%;
   
 }
 
