@@ -7,8 +7,6 @@ import "./Graph.css";
 import { line, curveNatural } from "d3";
 import { MarksRealData } from "./MarksRealData";
 
-
-
 const height = 500;
 const margin = { top: 20, right: 10, bottom: 65, left: 100 };
 const xAxisLabelOffset = 50;
@@ -38,10 +36,8 @@ export const Graph = ({
   RKIdata,
   SUdata,
   SZdata,
-  datenstand_schwarz
+  datenstand_schwarz,
 }) => {
-
-  
   let width = 800;
 
   let anzeigeDatenstand;
@@ -146,18 +142,10 @@ export const Graph = ({
     .range([0, innerWidth])
     .nice();
 
-
-  // const yScale = scaleLinear()
-  //   .domain([0, max(data, yQuantileGroß)])
-  //   .range([innerHeight, 0])
-  //   .nice();
-
-    const yScale = scaleLinear()
-    .domain([0, 16000])
+  const yScale = scaleLinear()
+    .domain([0, max(data, yQuantileGroß)])
     .range([innerHeight, 0])
     .nice();
-
-   
 
   return (
     <svg width={width} height={height}>
@@ -187,10 +175,7 @@ export const Graph = ({
           {xAxisLabel}
         </text>
         <g className="mark">
-
-
-
-       <Marks
+          <Marks
             data={EPIdata}
             xScale={xScale}
             yScale={yScale}
@@ -201,10 +186,9 @@ export const Graph = ({
             circleRadius={3}
             anzeigeAnAus={anzeigeEpiforecast}
             farbe={"red"}
-          /> 
+          />
 
-     
-            <Marks
+          <Marks
             data={ILMdata}
             xScale={xScale}
             yScale={yScale}
@@ -216,8 +200,8 @@ export const Graph = ({
             anzeigeAnAus={anzeigeILM}
             farbe={"0,0,255"}
           />
-          
-      <Marks
+
+          <Marks
             data={KITdata}
             xScale={xScale}
             yScale={yScale}
@@ -301,8 +285,8 @@ export const Graph = ({
             circleRadius={3}
             anzeigeAnAus={anzeigeSZ}
             farbe={"0,200,100"}
-          /> 
-           {/* <MarksRealData
+          />
+          {/* <MarksRealData
             data={datenstand_schwarz}
             xScale={xScale}
             yScale={yScale}
@@ -316,5 +300,3 @@ export const Graph = ({
     </svg>
   );
 };
-
-
