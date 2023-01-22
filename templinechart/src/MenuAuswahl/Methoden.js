@@ -82,9 +82,9 @@ export const MethodenDiv = () => {
     setEpiforecast(!isEpiforecast);
   }
   function handleClickILM() {
-     if(selectedScope === "DE"){
+    if (selectedScope === "DE") {
       setILM(!isILM);
-     } 
+    }
   }
   function handleClickKIT() {
     setKIT(!isKIT);
@@ -136,14 +136,7 @@ export const MethodenDiv = () => {
     date
   );
 
-  const ILMdata = useData(
-    "ILM-prop",
-    menuAge,
-    "DE",
-    intervall,
-    anzeige,
-    date
-  );
+  const ILMdata = useData("ILM-prop", menuAge, "DE", intervall, anzeige, date);
 
   const KITdata = useData(
     "KIT-simple_nowcast",
@@ -213,10 +206,6 @@ export const MethodenDiv = () => {
   );
 
   // let datesAfterEnde = useDataDatenstand(datenstand_schwarz);
-
-  console.log(ILMdata);
-
-
 
   return (
     <div>
@@ -429,7 +418,7 @@ export const MethodenDiv = () => {
                     </td>
                   </td>
                 </div>
-
+                {/*2*/}
                 <tr>
                   <div
                     className={`container ${isEpiforecast ? "moved" : ""}`}
