@@ -82,7 +82,9 @@ export const MethodenDiv = () => {
     setEpiforecast(!isEpiforecast);
   }
   function handleClickILM() {
-    setILM(!isILM);
+     if(selectedScope === "DE"){
+      setILM(!isILM);
+     } 
   }
   function handleClickKIT() {
     setKIT(!isKIT);
@@ -133,14 +135,16 @@ export const MethodenDiv = () => {
     anzeige,
     date
   );
-  // const ILMdata = useData(
-  //   "ILM-prop",
-  //   menuAge,
-  //   selectedScope,
-  //   intervall,
-  //   anzeige,
-  //   date
-  // );
+
+  const ILMdata = useData(
+    "ILM-prop",
+    menuAge,
+    "DE",
+    intervall,
+    anzeige,
+    date
+  );
+
   const KITdata = useData(
     "KIT-simple_nowcast",
     menuAge,
@@ -199,7 +203,7 @@ export const MethodenDiv = () => {
     date
   );
 
-  const datenstand_schwarz =  useDataDatenstand(
+  const datenstand_schwarz = useDataDatenstand(
     "KIT-simple_nowcast",
     menuAge,
     selectedScope,
@@ -210,7 +214,9 @@ export const MethodenDiv = () => {
 
   // let datesAfterEnde = useDataDatenstand(datenstand_schwarz);
 
-  // console.log(SZdata);
+  console.log(ILMdata);
+
+
 
   return (
     <div>
@@ -273,6 +279,7 @@ export const MethodenDiv = () => {
                 onSelectedValueChange={(selectedScope) => {
                   setmenuAge("00+");
                   setScope(selectedScope);
+                  setILM(false);
                   handleDiv1Selection();
                 }}
               />
@@ -365,7 +372,7 @@ export const MethodenDiv = () => {
           isSZ={isSZ}
           data={data}
           EPIdata={EPIdata}
-          // ILMdata={ILMdata}
+          ILMdata={ILMdata}
           KITdata={KITdata}
           LMUdata={LMUdata}
           Nowcastdata={Nowcastdata}

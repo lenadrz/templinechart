@@ -38,7 +38,7 @@ export const Graph = ({
   RKIdata,
   SUdata,
   SZdata,
-  // datenstand_schwarz
+  datenstand_schwarz
 }) => {
 
   
@@ -146,8 +146,14 @@ export const Graph = ({
     .range([0, innerWidth])
     .nice();
 
-  const yScale = scaleLinear()
-    .domain([0, max(data, yQuantileGroß)])
+
+  // const yScale = scaleLinear()
+  //   .domain([0, max(data, yQuantileGroß)])
+  //   .range([innerHeight, 0])
+  //   .nice();
+
+    const yScale = scaleLinear()
+    .domain([0, 16000])
     .range([innerHeight, 0])
     .nice();
 
@@ -197,7 +203,8 @@ export const Graph = ({
             farbe={"red"}
           /> 
 
-          {/* <Marks
+     
+            <Marks
             data={ILMdata}
             xScale={xScale}
             yScale={yScale}
@@ -208,8 +215,9 @@ export const Graph = ({
             circleRadius={3}
             anzeigeAnAus={anzeigeILM}
             farbe={"0,0,255"}
-          /> */}
-<Marks
+          />
+          
+      <Marks
             data={KITdata}
             xScale={xScale}
             yScale={yScale}
