@@ -21,7 +21,7 @@ import {
   initialDate,
 } from "./optionsCollection";
 import { useDataAxes } from "../Graph/useDataAxes";
-import { useDataDatenstand } from "../Graph/useDataBjörn";
+import { useCSVData, useDataDatenstand } from "../Graph/useDataBjörn";
 
 export const MethodenDiv = () => {
   // Tabelle mit Button eine und ausblende -----------------------------------
@@ -199,7 +199,7 @@ export const MethodenDiv = () => {
     date
   );
 
-  const datenstand_schwarz =  useDataDatenstand(
+  const datenstand_schwarz =  useCSVData(
     "KIT-simple_nowcast",
     menuAge,
     selectedScope,
@@ -207,6 +207,10 @@ export const MethodenDiv = () => {
     anzeige,
     date
   );
+
+  let datesAfterEnde = useDataDatenstand(datenstand_schwarz);
+
+  console.log(datesAfterEnde);
 
   return (
     <div>
