@@ -5,7 +5,7 @@ import { AxisLeft } from "./AxisLeft";
 import { Marks } from "./Marks";
 import "./Graph.css";
 import { line, curveNatural } from "d3";
-
+import { MarksRealData } from "./MarksRealData";
 
 
 
@@ -38,7 +38,7 @@ export const Graph = ({
   RKIdata,
   SUdata,
   SZdata,
-  realData
+  // datenstand_schwarz
 }) => {
 
   
@@ -294,6 +294,15 @@ export const Graph = ({
             anzeigeAnAus={anzeigeSZ}
             farbe={"0,200,100"}
           /> 
+           {/* <MarksRealData
+            data={datenstand_schwarz}
+            xScale={xScale}
+            yScale={yScale}
+            xValue={xValue}
+            yValue={yValue}
+            circleRadius={3}
+            farbe={"0,200,100"}
+          />  */}
         </g>
       </g>
     </svg>
