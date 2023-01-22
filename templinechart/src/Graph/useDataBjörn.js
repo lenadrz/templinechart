@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { csv } from "d3";
 import "./Graph.css";
 // import { getPopulation, Population } from "./Population";
-import {moment} from "moment";
+
 
 let zwischenspeicher;
 
@@ -23,40 +23,38 @@ export const useDataDatenstand = (
   const [datesAfterEnde, setDatesAfterEnde] = useState(null);
   const [Datenstand, setDatenstand] = useState(null);
 
-  // useEffect(() => {
-  //   const row = (d) => {
-  //     for (let i = 0; i <= 80; i++) {
-  //       d[`value_${i}d`] = parseFloat(d[`value_${i}d`]);
-  //     }
-  //     d["value_>80d"] = parseFloat(d["value_>80d"]);
-  //     // d.date = new Date(d.date);
-  //     // d.date= d.date;
-  //     d.date = moment(d.date, "YYYY-MM-DD").toDate()
+  useEffect(() => {
+    const row = (d) => {
+  
+   for (let i = 0; i <= 80; i++) {
+        d[`value_${i}d`] = parseFloat(d[`value_${i}d`]);
+      }
+      d["value_>80d"] = parseFloat(d["value_>80d"]);
+      d.date = new Date(d.date);
 
-  //     d.value = Object.values(d).reduce((total, value) => {
-  //       return total + (typeof value === 'number' ? value : 0);
-  //     }, 0);
+      d.value = Object.values(d).reduce((total, value) => {
+        return total + (typeof value === 'number' ? value : 0);
+      }, 0);
 
-  //     return d;
-  //   };
+      return d;
+    };
 
-  //   csv(csvUrl, row).then((loadedData) => {
-  //     const filteredData = loadedData.filter(
-  //       (d) => d.location === selectedScope && d.age_group === menuAge
-  //     );
-  //     setData(filteredData);
+    csv(csvUrl, row).then((loadedData) => {
+      const filteredData = loadedData.filter(
+        (d) => d.location === selectedScope && d.age_group === menuAge
+      );
+      setData(filteredData);
 
-  //     const dateEndePosition = filteredData.findIndex(
-  //       (d) => d.date.getTime() === dateEnde.getTime()
-  //     );
-  //     const datesAfterEnde = filteredData.slice(dateEndePosition + 1).length;
-  //     setDatesAfterEnde(datesAfterEnde);
-  //   });
-  // }, [methode, menuAge, selectedScope, anzeige]);
+      const dateEndePosition = filteredData.findIndex(
+        (d) => d.date.getTime() === dateEnde.getTime()
+      );
+      const datesAfterEnde = filteredData.slice(dateEndePosition + 1).length;
+      setDatesAfterEnde(datesAfterEnde);
+    });
+  }, [methode, menuAge, selectedScope, anzeige]);
 
-  // // console.log(data);
-
-  // return data;
+  // console.log(data);
+  return data;
 };
 
 

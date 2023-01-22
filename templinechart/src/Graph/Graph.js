@@ -286,7 +286,7 @@ export const Graph = ({
             anzeigeAnAus={anzeigeSZ}
             farbe={"0,200,100"}
           />
-          {/* <MarksRealData
+          <MarksRealData
             data={datenstand_schwarz}
             xScale={xScale}
             yScale={yScale}
@@ -294,7 +294,7 @@ export const Graph = ({
             yValue={yValue}
             circleRadius={3}
             farbe={"0,200,100"}
-          />  */}
+          /> 
         </g>
       </g>
     </svg>

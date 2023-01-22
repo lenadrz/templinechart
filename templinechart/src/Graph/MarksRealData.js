@@ -9,8 +9,6 @@ export const MarksRealData = ({
   yValue,
   circleRadius,
   anzeigeAnAus,
-  yQuantileGroß,
-  yQuantileKlein,
   farbe
 }) => (
   <g className="mark" stroke={farbe}>
