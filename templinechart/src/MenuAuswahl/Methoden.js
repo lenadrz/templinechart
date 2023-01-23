@@ -237,25 +237,28 @@ export const MethodenDiv = () => {
           </label>
         </div>
 
-        <div id="datenstand" className="menuOptionen">
-          <label className="einführung">Datenstand</label>
+
+      <div id="datenstand" className="menuOptionen">
+          <label className="einführung"><b>Datenstand</b></label>
           <div id="inhalt">
             <div className="container">
-              <label>Datenstand:</label>
               <div>
+              <button class="btn btn-light button-datenstand rounded ">
                 <input
                   type="date"
+                  name="select-date"
                   onChange={(e) => setDate(e.target.value)}
                   max={initialDate}
                   min="2021-07-01"
                 />
-                {/* Man kann ein anderes Datum nicht auswählen. Jedoch werden sie trz. angezeigt. @Lena, kannst du dir das mal anschauen? */}
-              </div>
-            </div>
-          </div>
+               </button>
+               </div>
+           </div>
+        </div>
         </div>
       </div>
-      <div>
+
+
         <div id="filter" className="menuOptionen">
           <label className="einführung">Filter</label>
           <div id="inhalt">
