@@ -237,30 +237,34 @@ export const MethodenDiv = () => {
           </label>
         </div>
 
-        <div id="datenstand" className="menuOptionen">
-          <label className="einführung">Datenstand</label>
+
+      <div id="datenstand" className="menuOptionen">
+          <label className="einführung"><b>Datenstand</b></label>
           <div id="inhalt">
             <div className="container">
-              <label>Datenstand:</label>
               <div>
+              <button class="btn btn-light button-datenstand rounded ">
                 <input
                   type="date"
+                  name="select-date"
                   onChange={(e) => setDate(e.target.value)}
                   max={initialDate}
                   min="2021-07-01"
                 />
-                {/* Man kann ein anderes Datum nicht auswählen. Jedoch werden sie trz. angezeigt. @Lena, kannst du dir das mal anschauen? */}
-              </div>
-            </div>
-          </div>
+               </button>
+               </div>
+           </div>
+        </div>
         </div>
       </div>
-      <div>
+
+
         <div id="filter" className="menuOptionen">
-          <label className="einführung">Filter</label>
+          <label className="einführung"><b>Filter</b></label>
           <div id="inhalt">
             <div id="div1" class="visible">
               <label for="scope-select">Bundesland:</label>
+              <button class="btn btn-light button-filter rounded">
               <Dropdown
                 options={options}
                 id="scope-select"
@@ -272,9 +276,12 @@ export const MethodenDiv = () => {
                   handleDiv1Selection();
                 }}
               />
+            </button>
             </div>
+
             <div id="div2" class="hidden">
               <label for="scope-select">Alter:</label>
+              <button class="btn btn-light button-filter rounded "> 
               <Dropdown
                 options={optionsAge}
                 id="age-select"
@@ -285,64 +292,76 @@ export const MethodenDiv = () => {
                   handleDiv2Selection();
                 }}
               />
+            </button>
             </div>
           </div>
         </div>
 
-        <div id="anzeige" className="menuOptionen">
-          <label className="einführung">Anzeige</label>
-          <div id="inhalt">
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
-              <label>Pro 100.000: </label>
-              <input
-                type="radio"
-                name="größe"
-                value="hunderttausend"
-                onChange={(e) => setAnzeige(e.target.value)}
-                checked={anzeige === "hunderttausend"}
-              />
-              <label>absolute Zahlen: </label>{" "}
-              <input
+         <div id="anzeige" className="menuOptionen">
+         <label className="einführung"><b>Anzeige</b></label>
+         <div id="inhalt">
+          <button class="btn btn-light button-anzeige rounded ">
+             <label>Pro 100.000 </label>
+             <input 
+               type="radio"
+               name="größe"
+               value="hunderttausend"
+               onChange={(e) => setAnzeige(e.target.value)}
+               checked={anzeige === "hunderttausend"}
+             />
+          </button>
+                  
+              <button class="btn btn-light button-anzeige rounded">
+              <label>absolute Zahlen </label>
+              {" "}
+              <input 
                 type="radio"
                 name="größe"
                 value="absoluteZahlen"
                 onChange={(e) => setAnzeige(e.target.value)}
                 checked={anzeige === "absoluteZahlen"}
               />
-            </div>
-          </div>
-        </div>
+              </button>
+       </div>
+       </div>
+
+        
+        
 
         <div id="unsicherheitsintervall" className="menuOptionen">
-          <label className="einführung">Unsicherheitsintervall</label>
-          <div id="inhalt">
-            <div>
-              95 % :{" "}
-              <input
+        <label className="einführung"><b>Unsicherheitsintervall</b></label>
+         <div id="inhalt">
+          <button class="btn btn-light button-unsicherheitsintervall rounded ">
+             <label> 95%  </label>
+             <input 
                 type="radio"
                 name="unsicherheitsintervall"
                 value="FÜNFundNEUNZIG"
                 onChange={(e) => setIntervall(e.target.value)}
               />
-              50 % :{" "}
-              <input
+          </button>
+          <button class="btn btn-light button-unsicherheitsintervall rounded ">
+             <label> 50%  </label>
+             <input 
                 type="radio"
                 name="unsicherheitsintervall"
                 value="FÜNFZIG"
                 onChange={(e) => setIntervall(e.target.value)}
               />
-              keines :{" "}
-              <input
+          </button>
+
+          <button class="btn btn-light button-unsicherheitsintervall rounded ">
+             <label> keines </label>
+             <input 
                 type="radio"
                 name="unsicherheitsintervall"
                 value="keines"
                 onChange={(e) => setIntervall(e.target.value)}
                 defaultChecked
               />
-            </div>
+          </button>
           </div>
         </div>
-      </div>
 
       {/* Graph ----------------------------------------------------------- */}
       <div className="GraphundMethoden">
