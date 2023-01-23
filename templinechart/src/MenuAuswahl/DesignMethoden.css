@@ -214,3 +214,140 @@
   
 }
 
+/*Auswahlbereich links von Tablle*/
+/*Position der Auswahlmöglichkeiten*/
+#filter {
+  position: absolute;
+  top: 14%
+}
+
+#inhalt {
+  position: absolute;
+  left: 20px;
+  top: 25px;
+  border:#EEEEEE;
+}
+
+/*Überschriften*/ 
+.einführung {
+  font-size: 16px;
+  /*background-color: #EEEEEE;*/
+  border-radius: 10%;
+  width: 160px;
+}
+
+/*design alle Button links*/
+
+.button-datenstand{
+  margin-left: auto;
+  margin-right: 0;
+  width: 11rem;
+  font-size: 0.9rem;
+  position: relative;
+   left: 0px;
+  border-radius: 5px;
+  border: 0px;
+  margin: -2px 0px;
+  margin-bottom: 10px;
+  padding: 6px 4px;
+  text-align: left;
+}
+
+.button-filter{
+  margin-left: auto;
+  margin-right: 0;
+  width: 11rem;
+  font-size: 0.9rem;
+  position: relative;
+   left: 0px;
+  border-radius: 5px;
+  border: 0px;
+  margin: 3px 0px;
+  margin-bottom: 10px;
+  padding: 4px 4px;
+  text-align: left;
+}
+
+.button-anzeige{
+  margin-left: auto;
+  margin-right: 0;
+  width: 11rem;
+  font-size: 0.9rem;
+  position: relative;
+   left: 0px;
+  border-radius: 5px;
+  border: 0px;
+  margin: 5px 0px;
+  margin-bottom: 0px;
+  padding: 6px 6px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+.button-unsicherheitsintervall{
+  margin-left: auto;
+  margin-right: 0;
+  width: 11rem;
+  font-size: 0.9rem;
+  position: relative;
+   left: 0px;
+  border-radius: 5px;
+  border: 0px;
+  margin: 5px 0px;
+  margin-bottom: 0px;
+  padding: 6px 6px;
+  text-align: center;
+}
+
+/*Beginn Abschnitte*/
+
+/*Datenstand*/
+input[name="select-date"] {
+  border: none;
+  outline: 0px;
+  background: none;
+  width: 98%;
+  margin-left: 2px;
+
+}
+
+
+/*Filter: Bundesland und Alter Auswahl gleich groß*/
+#scope-select {
+  border: none;
+  outline: 0px;
+  width: 100%;
+  border-radius: 0.375rem;
+  border-color: transparent;
+  background-color: transparent;
+  text-align: left;
+  font-size: 0.9rem;
+  accent-color: grey;
+}
+#age-select {
+  width: 100%;
+  border: none;
+  outline: 0px;
+  border-radius: 0.375rem;
+  border-color: transparent;
+  background-color: transparent;
+  text-align: left;
+  font-size: 0.9rem;
+  padding-left: -2px;
+  accent-color: grey;
+}
+
+input[name="größe"] {
+	accent-color: grey;
+  position: absolute;
+    left: 85%;
+}
+
+input[name="unsicherheitsintervall"] {
+	accent-color: grey;
+  position: absolute;
+    left: 65%;
+}
+
+
+
